@@ -6,15 +6,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mini Aplicación de Telegram</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        html, body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden; /* Evitar el desplazamiento */
+            font-family: Arial, sans-serif;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centrar verticalmente */
+            align-items: center; /* Centrar horizontalmente */
+            height: 100%;
+            padding: 20px;
+            background-color: #f0f0f0; /* Color de fondo */
+        }
+
         #output {
             margin-top: 20px;
             padding: 10px;
             border: 1px solid #ccc;
+            width: 100%; /* Asegura que el output ocupe todo el ancho */
         }
+
         .button {
             margin-right: 10px;
         }
@@ -22,27 +43,31 @@
 </head>
 <body>
 
-<h1>Mini Aplicación de Telegram</h1>
+<div id="container">
+    <h1>Mini Aplicación de Telegram</h1>
 
-<button class="button" id="getUser">Obtener Información del Usuario</button>
-<button class="button" id="changeTheme">Cambiar Color del Tema</button>
-<button class="button" id="closeApp">Cerrar Aplicación</button>
+    <button class="button" id="getUser">Obtener Información del Usuario</button>
+    <button class="button" id="changeTheme">Cambiar Color del Tema</button>
+    <button class="button" id="closeApp">Cerrar Aplicación</button>
+    <button class="button" id="expandApp">Expandir Aplicación</button> <!-- Botón para expandir -->
 
-<div id="output"></div>
+    <div id="output"></div>
+</div>
 
 <script>
     // Verificar si estamos en el navegador de Telegram
     if (window.Telegram) {
-    alert(JSON.stringify(window.Telegram.WebApp,null,2))
+        alert(JSON.stringify(window.Telegram.WebApp,null,2));
+        
         // Obtener información del usuario
         document.getElementById('getUser').onclick = function() {
-            const user = window.Telegram.WebApp.initDataUnsafe.user;
+            const user = window.Telegram.WebApp.initDataUnsafe.user||{};
             const output = document.getElementById('output');
             output.innerHTML = `
                 <h3>Información del Usuario:</h3>
-                <p>ID: ${user.id}</p>
-                ${user.photo_url} foto
-                <p>Nombre: ${user.first_name} ${user.last_name || ''}</p>
+                <p>ID: ${user.id||''}</p>
+                ${user.photo_url ? `<img src="${user.photo_url}" alt="Foto de usuario" style="max-width:100px;"/>` : ''}
+                <p>Nombre: ${user.first_name||'Anónimo'} ${user.last_name || ''}</p>
                 <p>Usuario: ${user.username || 'No tiene'}</p>
             `;
         };
@@ -60,6 +85,11 @@
         // Cerrar la aplicación
         document.getElementById('closeApp').onclick = function() {
             window.Telegram.WebApp.close();
+        };
+
+        // Expandir la aplicación
+        document.getElementById('expandApp').onclick = function() {
+            window.Telegram.WebApp.expand(); // Expande la aplicación a pantalla completa
         };
 
         // Inicializar el WebApp
