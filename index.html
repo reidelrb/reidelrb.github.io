@@ -94,9 +94,10 @@
 
         // Inicializar el WebApp
         window.Telegram.WebApp.onEvent('viewportChanged', function() {
-            console.log('El tamaño de la ventana ha cambiado');
+            alert('El tamaño de la ventana ha cambiado');
+            window.Telegram.WebApp.expand()
         });
-
+window.Telegram.WebApp.expand()
     } else {
         alert("Este contenido solo se puede usar dentro del navegador de Telegram.");
     }
