@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini Aplicación de Telegram</title> 
+    <title>Mini Aplicación de Telegram</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -33,6 +33,7 @@
 <script>
     // Verificar si estamos en el navegador de Telegram
     if (window.Telegram) {
+    alert(JSON.stringify(window.Telegram.WebApp,null,2))
         // Obtener información del usuario
         document.getElementById('getUser').onclick = function() {
             const user = window.Telegram.WebApp.initDataUnsafe.user;
@@ -40,6 +41,7 @@
             output.innerHTML = `
                 <h3>Información del Usuario:</h3>
                 <p>ID: ${user.id}</p>
+                ${user.photo_url} foto
                 <p>Nombre: ${user.first_name} ${user.last_name || ''}</p>
                 <p>Usuario: ${user.username || 'No tiene'}</p>
             `;
