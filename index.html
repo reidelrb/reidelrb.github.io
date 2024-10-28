@@ -1,250 +1,229 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <script>
+      // window.location.hash = "tgWebAppData=user%3D%257B%2522id%2522%253A6526862605%252C%2522first_name%2522%253A%2522Reidel%2522%252C%2522last_name%2522%253A%2522%2522%252C%2522username%2522%253A%2522reidelcode%2522%252C%2522language_code%2522%253A%2522es%2522%252C%2522allows_write_to_pm%2522%253Atrue%257D%26chat_instance%3D8687617147785070437%26chat_type%3Dprivate%26auth_date%3D1730077246%26hash%3D910b138b836a4698d1ea5bcb2dc638bb5067a53ff278344a1c18926d7fdd17f6&tgWebAppVersion=7.4&tgWebAppPlatform=android&tgWebAppThemeParams=%7B%22bg_color%22%3A%22%23212d3b%22%2C%22section_bg_color%22%3A%22%231d2733%22%2C%22secondary_bg_color%22%3A%22%23151e27%22%2C%22text_color%22%3A%22%23ffffff%22%2C%22hint_color%22%3A%22%237d8b99%22%2C%22link_color%22%3A%22%235eabe1%22%2C%22button_color%22%3A%22%2350a8eb%22%2C%22button_text_color%22%3A%22%23ffffff%22%2C%22header_bg_color%22%3A%22%23242d39%22%2C%22accent_text_color%22%3A%22%2364b5ef%22%2C%22section_header_text_color%22%3A%22%2379c4fc%22%2C%22subtitle_text_color%22%3A%22%237b8790%22%2C%22destructive_text_color%22%3A%22%23ee686f%22%7D"
+    </script>
     <title>Reidelrb Article</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <link rel="canonical" href="https://reidelrb.github.io">
-    <style id="style">
-      @import url(https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css); @import url(https://fonts.googleapis.com/css2?family=Asap:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@400;900); @import url(https://fonts.googleapis.com/css?family=EB+Garamond%7CWork+Sans:400,700); * {
-        box-sizing: border-box;
-        user-select: none;
-        cursor: default
-      }
-
-      html,body {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        margin: 0;
-        padding: 0
-      }
-
-      body {
-        background: var(--background);
-        box-shadow: inset 0 0 4em var(--bg-shadow);
-        color: var(--color-font);
-        font-family: arial;
-        overflow:auto;
-        font-size: clamp(15px, 6.2vw, 2.7rem)
-      }
-
-      h1 {
-        font-size: 2.3em;
-        line-height: 1em;
-        margin: .2em .3em .1em
-      }
-
-      h2 {
-        font-size: 1.3em;
-        line-height: 1.2em;
-        margin: 0 .4em .1em
-      }
-
-      h1,h2,footer {
-        width: 100%;
-        font-family: asap
-      }
-
-      p {
-        font-family: EB Garamond, times, serif;
-        font-size: 1.1em;
-        line-height: 1.2em;
-        padding: .1em .5em .5em;
-        display: inline-block;
-        margin: 0;
-        width: 100%
-      }
-
-      h2,p {
-        float: left
-      }
-
-      header>div {
-        margin: .5em .7em 1em;
-        display: flex;
-        flex-wrap: wrap;
-        font-size: .9em;
-        font-family: arial
-      }
-
-      [data-time] {
-        color: var(--header);
-        font-size: .97em;
-        font-weight: 900;
-        margin: .3em .2em
-      }
-
-      [data-view] {
-        background: red;
-        color: #fff;
-        margin: 0 1em .1em 0;
-        padding: .2em;
-        border-radius: .2em;
-        font-weight: 900;
-        box-shadow: 0 0 2px #111;
-        white-space: nowrap
-      }
-
-      [data-auth] {
-        width: 100%;
-        padding: .3em;
-        font-size: .9em
-      }
-
-      main {
-        width: 100%;
-        display: block;
-      }
-
-      article {
-        overflow: hidden;
-        min-height: 70%;
-        width: 100%;
-        padding: 1.5em .3em .2em
-      }
-
-      img {
-        width: 100%;
-        display: block;
-        background-image: repeating-conic-gradient(#0002 0 25%,transparent 0 50%);
-        background-position: 0 0,33px 33px;
-        background-size: 70px 70px;
-        background-color: #fff1;
-        color: var(--color-font);
-        font-size: .5em;
-        min-height: 1em
-      }
-
-      article figure {
-        width: calc(100% - 2em);
-        font-size: .7em;
-        position: relative;
-        padding: 0;
-        display: inline-block;
-        margin: 0 1em;
-        outline: 0;
-        top: -2em;
-        font-weight: 200;
-        text-shadow: 0 0 .5em #000;
-        color: #fff
-      }
-
-      article .g {
-        aspect-ratio: 1/1;
-        object-fit: cover;
-        overflow: auto;
-        display: inline-block;
-        margin: .3em;
-        outline: 0;
-        float: left;
-        width: calc( 33.3333% - .6em )
-      }
-
-      footer {
-        background: var(--footer-bg);
-        padding: 1em .5em;
-        width: 100%;
-        min-height: 30%;
-        box-shadow: 0 0 1px #000;
+    <link rel="stylesheet" href="style.css">
+    <style>
+      app{
+        position: fixed;
         display: flex;
         flex-direction: column;
-        justify-content: center
+        bottom: .3em;
+        right: .2em;
+        background: dodgerblue;
+        border-radius: .2em;
+        text-align:center;
+        box-shadow: 0 0 .2em #000;
+        font-size:1.2em
       }
+      app a{
+        color: #fff;
+        min-width:1.6em;
+        padding:.2em 0
+      }
+      app b{
+        color: #fff;
+        display: inline-block;
+        border-bottom: solid 1px #fff
+      }
+.accion {
+  outline: 0;
+  margin: 1em auto ;
+  border-radius: .2em;
+  border: outset 1px var(--bg-shadow);
+  background: var(--background);
+  color: var(--cl);
+  box-shadow: 0 0 .2em #000;
+  max-width: 20em;
+  width: 90%;
+  font-size: .9em;
+  padding: .8em .5em;
+  animation: a-pt .5s
+}
 
-      section.share {
-        margin: 0 .2em .1em;
-        font-weight: 900
-      }
+@keyframes a-pt {
+  0% {
+    margin-top: -80%
+  }
+}
 
-      a {
-        color: dodgerblue;
-        font-weight: 700
-      }
+.accion div {
+  padding: .5em 0;
+  font-weight: 300;
+  overflow: auto
+}
 
-      footer div {
-        color: var(--header);
-        font-weight: 300
-      }
+.accion>label {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 1.2em;
+  padding: 0 .3em;
+  color: #acacac
+}
 
-      [data-share] {
-        font-size: 1.3em;
-        font-weight: 900;
-        margin: .3em;
-        color: inherit;
-        vertical-align: middle;
-        display: inline-block
-      }
+.accion :is(b,strong,strong-a){
+  font-weight:600;
+  display:inline-block;
+  font-size:.7em;
+  width:100%
+}
 
-      :root {
-        --background: #fff;
-        --color-font: #2a2a2a;
-        --header: #555;
-        --bg-shadow: #0002;
-        --footer-bg: #ececec
-      }
+strong-a{
+  color:red
+}
 
-      .dark-css {
-        --background: #444;
-        --color-font: #fff;
-        --header: yellow;
-        --bg-shadow: #000;
-        --footer-bg: #111
-      }
-
-      @media(min-width: 700px) {
-        article {
-          width:90%;
-          max-width: 35em;
-          margin: auto
-        }
-        footer {
-          flex-direction: row;
-          align-items: center
-        }
-      }
+button {
+  display: inline-block;
+  vertical-align: middle;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  padding: .3em;
+  outline: 0;
+  font-size: .7em;
+  text-shadow:0 0 1px #000;
+  background-color: dodgerblue;
+  border: 1px solid #595ef1bd
+}
     </style>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
   </head>
   <body>
-    <article>
+    <app>
+      <a href="" class="bi-telegram">_bot</a>
+    </app>
+    <article></article>
+  </body>
+  <script src="script.js"></script>
+  <script>
+      const app = document.querySelector('app')
+ad = (t)=>{
+  let e = document.createElement(t)
+  if (t == 'h2') {
+    e.innerHTML = 'Lorem Ipsum title.'
+  }
+  if (t == 'p') {
+    e.innerHTML = 'Tritani ceteros eligendi usu ea, ei omnis menandri oportere has. bh vide wisi, pro in iriure antiopam. disputando.'
+  }
+  if (t == 'img') {
+    e.src = ''
+    e.loading = "lazy"
+    e.alt = ""
+    miga.tagName == 'IMG' && (e.className = miga.className)
+  }
+
+  if (miga.tagName != 'H1' && miga.tagName != 'BODY') {
+    miga.after(e)
+  } else {
+    document.querySelector('article section').append(e)
+  }
+  action()
+  app.innerHTML = ''
+}
+gtk = e=>{
+  var t = new Date().getTime();
+  return (e || "token-xxxxxxxx").replace(/[xy]/g, function(e) {
+    var n = (t + 16 * Math.random()) % 16 | 0;
+    return t = Math.floor(t / 16),
+    ("x" == e ? n : 3 & n | 8).toString(16)
+  })
+}
+accion = (t,c)=>{
+  let i = gtk('rbxxxxxxxxxxx')
+  window['accion'+i] = document.createElement('dialog')
+  window['accion'+i].className = 'accion'
+  window['accion'+i].innerHTML = `<div>${t}</div>${c ? '<hr/><button class="acepta bi-hand-index-thumb-fill"> Confirmar</button>' : ''}<label>×</label>`
+  document.body.append(window['accion'+i])
+  window['accion'+i].showModal()
+  window['accion'+i].querySelector('label').onclick = function() {
+    window['accion'+i].remove()
+  }
+  if (c) {
+    window['accion'+i].querySelector('.acepta').onclick = function() {
+      c()
+      window['accion'+i].remove()
+    }
+  } else {
+    window['accion'+i].querySelector('label').focus()
+  }
+}
+window.alert = accion
+
+    if(window.Telegram&&window.Telegram.WebApp.initDataUnsafe.user) {
+      console.log(JSON.stringify(window.Telegram.WebApp,null,2));
+      const user = window.Telegram.WebApp.initDataUnsafe.user||{};
+        app.onclick=function(){
+          event.stopPropagation()
+        }
+      const template = `
         <header>
-          <h1>Web article about to...</h1>
+          <h1>Minimalist page web</h1>
           <div>
             <span data-view="" class="bi-eye-fill">&nbsp;Views</span>
             <span data-time="" class="bi-calendar2-date">&nbsp;Time ago</span>
-            <a data-auth="" class="bi-person-circle">&nbsp;${user.first_name||'Anónimo'} ${user.last_name || ''}</a>
+            <a data-auth="" class="bi-person-circle">&nbsp;${user.first_name} ${user.last_name || ''}</a>
           </div>
         </header>
         <section>
-          <p> Crea tu artículo web...Crea tu artículo web..Crea tu artículo web..Crea tu artículo web..Crea tu artículo web..Crea tu artículo web.......</p>
-          <p> Crea tu artículo web...Crea tu artículo web..Crea tu artículo web..Crea tu artículo web..Crea tu artículo web..Crea tu artículo web.......</p>
-          <p> Crea tu artículo web...Crea tu artículo web..Crea tu artículo web..Crea tu artículo web..Crea tu artículo web..Crea tu artículo web.......</p>
+          <p>Hola ${user.first_name}, puedes editar ésta página y compartirla con tus amigos...</p>
         </section>        
-    </article>
-    <footer>
-      <section class="share">
-        <span>Share on</span>
-        <label data-share="https://t.me/share/url?url=[host]&text=[title]" class="bi-telegram"></label>
-        <label data-share="https://api.whatsapp.com/send?text=[host] [title]" class="bi-whatsapp"></label>
-        <label data-share="" class="bi-share-fill"></label>
-      </section>
-      <div>
-        <span>
-          October 2024 by <a>v1.0Beta</a>
-        </span>
-      </div>
-     </footer>
-  </body>
-  <script>
-    if(window.Telegram&&window.Telegram.WebApp.initDataUnsafe.user) {
-        window.Telegram.WebApp.onEvent('viewportChanged', function() {
-            window.Telegram.WebApp.expand()
+      `
+      article.innerHTML = localStorage.record || template;
+      
+      (action=(e)=>{
+        localStorage.record = article.innerHTML;
+        ['article h1','article h2','article p','article img','body'].forEach(t=>{
+          document.querySelectorAll(t).forEach(e=>{
+            e.onclick=function(){
+              event.stopPropagation()
+              let e = this
+              let t = this.tagName
+              app.innerHTML= t!='BODY'?`<b>${t.slice(0,2)}</b>`:''
+              
+              opt=(c,f)=>{
+                let a = document.createElement('a')
+                a.className = 'bi-'+ c
+                a.onclick=f
+                app.append(a)
+              }
+              
+              opt('plus-square-fill',()=>{
+                miga = this
+                app.innerHTML=`
+                <a onclick="ad('img')" class="bi-image"></a>
+                <a onclick="ad('h2')" class="bi-fonts"></a>
+                <a onclick="ad('p')" class="bi-justify-left"></a>
+                `
+              });
+
+              (t!='BODY')&&(
+                opt('pencil-square',()=>{
+                  alert(this.innerHTML)
+                })
+              );
+
+              (t!='BODY'&&t!='H1')&&(
+                opt('trash',()=>{
+                  accion('Eliminar',()=>{
+                    this.remove()
+                  })
+                })
+              );
+              
+            }
+          })
         });
-        window.Telegram.WebApp.expand()
- 
-     }else{
-      alert("67")
+      })()
+      article.click()
+    }else{
+      article.innerHTML = 'Abre el bot para'
     }
   </script>
 </html>
