@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="es5">
+<html lang="es">
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mini Aplicaci贸n de Telegram</title>
+    <title>Mini Aplicaci髇 de Telegram</title>
     <style>
         * {
             margin: 0;
@@ -15,7 +15,6 @@
         html, body {
             height: 100%;
             width: 100%;
-            overflow: hidden; /* Evitar el desplazamiento */
             font-family: Arial, sans-serif;
         }
 
@@ -42,14 +41,14 @@
     </style>
 </head>
 <body>
-
 <div id="container">
-    <h1>Mini Aplicaci贸n de Telegram</h1>
 
-    <button class="button" id="getUser">Obtener Informaci贸n del Usuario</button>
+   <h1>Mini Aplicaci髇 de Telegram</h1>
+
+    <button class="button" id="getUser">Obtener Informaci髇 del Usuario</button>
     <button class="button" id="changeTheme">Cambiar Color del Tema</button>
-    <button class="button" id="closeApp">Cerrar Aplicaci贸n 6777</button>
-    <button class="button" id="expandApp">Expandir Aplicaci贸n</button> <!-- Bot贸n para expandir -->
+    <button class="button" id="closeApp">Cerrar Aplicaci髇</button>
+    <button class="button" id="expandApp">Expandir Aplicaci髇</button> <!-- Bot髇 para expandir -->
 
     <div id="output"></div>
     <div style="width:40%;background:dodgerblue;height:100%"></div>
@@ -60,16 +59,16 @@
     if (window.Telegram) {
         alert(JSON.stringify(window.Telegram.WebApp,null,2));
         alert(window.location.href)
-        output.innerHTML=window.Telegram.WebApp.initData
-        // Obtener informaci贸n del usuario
+        output.innerHTML=window.location.href
+        // Obtener informaci髇 del usuario
         document.getElementById('getUser').onclick = function() {
             const user = window.Telegram.WebApp.initDataUnsafe.user||{};
             const output = document.getElementById('output');
             output.innerHTML = `
-                <h3>Informaci贸n del Usuario:</h3>
+                <h3>Informaci髇 del Usuario:</h3>
                 <p>ID: ${user.id||''}</p>
                 ${user.photo_url ? `<img src="${user.photo_url}" alt="Foto de usuario" style="max-width:100px;"/>` : ''}
-                <p>Nombre: ${user.first_name||'An贸nimo'} ${user.last_name || ''}</p>
+                <p>Nombre: ${user.first_name||'An髇imo'} ${user.last_name || ''}</p>
                 <p>Usuario: ${user.username || 'No tiene'}</p>
             `;
         };
@@ -84,14 +83,14 @@
             }
         };
 
-        // Cerrar la aplicaci贸n
+        // Cerrar la aplicaci髇
         document.getElementById('closeApp').onclick = function() {
             window.Telegram.WebApp.close();
         };
 
-        // Expandir la aplicaci贸n
+        // Expandir la aplicaci髇
         document.getElementById('expandApp').onclick = function() {
-            window.Telegram.WebApp.expand(); // Expande la aplicaci贸n a pantalla completa
+            window.Telegram.WebApp.expand(); // Expande la aplicaci髇 a pantalla completa
         };
 
         // Inicializar el WebApp
