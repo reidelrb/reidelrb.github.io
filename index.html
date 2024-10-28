@@ -25,6 +25,7 @@
         box-shadow: inset 0 0 4em var(--bg-shadow);
         color: var(--color-font);
         font-family: arial;
+        overflow:auto;
         font-size: clamp(15px, 6.2vw, 2.7rem)
       }
 
@@ -93,9 +94,7 @@
 
       main {
         width: 100%;
-        height: 100%;
         display: block;
-        overflow: auto
       }
 
       article {
@@ -177,59 +176,6 @@
         display: inline-block
       }
 
-      .fview {
-        background-color: rgba(0,0,0,0.9);
-        touch-action: none;
-        position: fixed;
-        z-index: 9999;
-        overflow: auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0
-      }
-
-      .fview img {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-        object-fit: contain;
-        animation: a-p .5s;
-        padding: .5em
-      }
-
-      .fview a {
-        position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 1.5em;
-        color: #000;
-        text-shadow:0 0 .2em #fff;
-        margin: .5em
-      }
-
-      .fview div {
-        background: var(--background);
-        font-size: .9em;
-        padding: .5em;
-        font-family: asap;
-        min-height: 5em;
-        text-align: left
-      }
-
-      @keyframes a-p {
-        0% {
-          padding: 80%
-        }
-
-        40% {
-          padding: 50%
-        }
-      }
-
       :root {
         --background: #fff;
         --color-font: #2a2a2a;
@@ -252,201 +198,53 @@
           max-width: 35em;
           margin: auto
         }
-
-        .fview div, footer {
-          text-align: center
-        }
-
-        .fview div {
-          min-height: auto
-        }
-
         footer {
           flex-direction: row;
           align-items: center
         }
       }
     </style>
-    <style>
-      .ups {
-        margin: 3em 1em;
-        text-align: center
-      }
-
-      p, h1, h2 {
-        min-height: 1em
-      }
-
-      #loading,.g-recaptcha {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        position: fixed;
-        z-index: 9999;
-        top: 0;
-        left: 0;
-        background: rgba(0,0,0,0.4);
-        color: #fff
-      }
-      
-      #loading h1{
-        text-shadow: 0 0 .3em #000;
-        text-align: center;
-      }
-
-      .g-recaptcha {
-        display: none
-      }
-      
-      footer{
-        padding-left: 2.5em        
-      }
-    </style>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
   </head>
   <body>
-    <a href="javascript:window.close()"></a>
-    <div id="mcaptcha" class="g-recaptcha" data-callback="captcha" data-sitekey="6LdE6qgbAAAAANq2Tal4NuP8YdGwtfdTpCLArNE-">7</div>
-    <main>
-      <article></article>
-      <footer>
-        <section class="share">
-          <span>Share on</span>
-          <label data-share="https://t.me/share/url?url=[host]&text=[title]" class="bi-telegram"></label>
-          <label data-share="https://api.whatsapp.com/send?text=[host] [title]" class="bi-whatsapp"></label>
-          <label data-share="" class="bi-share-fill"></label>
-        </section>
-        <div>
-          <span>
-            October 2024 by <a>v1.0Beta</a>
-          </span>
-        </div>
-     </footer>
-    </main>
-    <template>
-      <header data-user="">
-        <h1>Web article about to...</h1>
-        <div>
-          <span data-view="" class="bi-eye-fill">&nbsp;Views</span>
-          <span data-time="" class="bi-calendar2-date">&nbsp;Time ago</span>
-          <a data-auth="" class="bi-person-circle">&nbsp;Anónimo</a>
-        </div>
-      </header>
-      <section>
-        <p> Crea tu artículo web...</p>
+    <article>
+        <header>
+          <h1>Web article about to...</h1>
+          <div>
+            <span data-view="" class="bi-eye-fill">&nbsp;Views</span>
+            <span data-time="" class="bi-calendar2-date">&nbsp;Time ago</span>
+            <a data-auth="" class="bi-person-circle">&nbsp;${user.first_name||'Anónimo'} ${user.last_name || ''}</a>
+          </div>
+        </header>
+        <section>
+          <p> Crea tu artículo web...Crea tu artículo web..Crea tu artículo web..Crea tu artículo web..Crea tu artículo web..Crea tu artículo web.......</p>
+          <p> Crea tu artículo web...Crea tu artículo web..Crea tu artículo web..Crea tu artículo web..Crea tu artículo web..Crea tu artículo web.......</p>
+          <p> Crea tu artículo web...Crea tu artículo web..Crea tu artículo web..Crea tu artículo web..Crea tu artículo web..Crea tu artículo web.......</p>
+        </section>        
+    </article>
+    <footer>
+      <section class="share">
+        <span>Share on</span>
+        <label data-share="https://t.me/share/url?url=[host]&text=[title]" class="bi-telegram"></label>
+        <label data-share="https://api.whatsapp.com/send?text=[host] [title]" class="bi-whatsapp"></label>
+        <label data-share="" class="bi-share-fill"></label>
       </section>
-    </template>
-    <div id="loading">
-      <h1>Load...</h1>
-    </div>
+      <div>
+        <span>
+          October 2024 by <a>v1.0Beta</a>
+        </span>
+      </div>
+     </footer>
   </body>
-  <script src="edt.js"></script>
-  <script id="script">
-    (lib = ()=>{
-      document.querySelectorAll('.share [data-share]').forEach(a=>{
-        a.onclick = function() {
-          if (this.dataset.share) {
-            open(this.dataset.share.replaceAll('[title]', article.querySelector("h1").innerHTML).replaceAll('[host]', window.location.href))
-          } else {
-            navigator.share && (navigator.share({
-              title: 'Share',
-              text: article.querySelector("h1").innerHTML,
-              url: window.location.href
-            }).then(()=>0).catch(r=>0))
-          }
-        }
-      }
-      );
-      ((i)=>{
-        if (i && i.dataset.view) {
-          fetch(`https://api.counterapi.dev/v1/${i.dataset.view}/counter${!sessionStorage.up ? '/up' : ''}`).then(r=>r.json()).then(c=>{
-            document.querySelector('[data-view]').innerHTML = ` ${c.count}`;
-            sessionStorage.up = true
-          }
-          ).catch(e=>true)
-        }
-      }
-      )(document.querySelector("[data-view]"));
-      (function(e) {
-        if (e) {
-          let t, o, n = (new Date().getTime() - new Date(e.dataset.time || new Date).getTime()) / 1e3, m = Math.floor(n / 60), r = Math.floor(m / 60), l = Math.floor(r / 24), a = Math.floor(l / 30), $ = Math.floor(a / 12);
-          o = $ > 0 ? [$, "year"] : a > 0 ? [a, "month"] : l > 0 ? [l, "day"] : r > 0 ? [r, "hour"] : m > 0 ? [m, "minutes"] : [0, "second"];
-          try {
-            let m = new Intl.RelativeTimeFormat((window.navigator.language || navigator.browserLanguage),{
-              numeric: "auto",
-              style: "long"
-            });
-            t = m.format(-1 * o[0], o[1]),
-            n < 0 && (t = "--")
-          } catch (i) {}
-          e.innerHTML = ' ' + t
-        }
-      }
-      )(document.querySelector("[data-time]"));
-      ((f)=>{
-        f.forEach(e=>{
-          if (e.classList.contains('g')) {
-            e.onclick = function() {
-              $img_open = this;
-              v = document.createElement('div');
-              v.className = 'fview';
-              v.innerHTML = `<a class="bi-x-circle-fill"></a><img src="${this.src}"><div>${(this.alt || 'Sin info').replace(/[\W]+/gim, ' ')}</div>`;
-              v.onclick = function() {
-                this.remove()
-              }
-              ;
-              v.ondragstart = ()=>false;
-              v.onpointerdown = function() {
-                $pi = event.clientX;
-                v.setPointerCapture(event.pointerId);
-                v.onpointerup = function(event) {
-                  if ($pi > event.clientX + 150) {
-                    let nx = $img_open.nextElementSibling;
-                    nx && nx.classList.contains('g') && (this.remove(),
-                    nx.click())
-                  }
-                  if ($pi + 150 < event.clientX) {
-                    let pv = $img_open.previousElementSibling;
-                    pv && pv.classList.contains('g') && (this.remove(),
-                    pv.click())
-                  }
-                }
-              }
-              ;
-              document.body.prepend(v)
-            }
-          }
-          e.onerror = function() {
-            let i = document.createElement("canvas")
-              , $ = i.getContext("2d");
-            this.src = (i.width = 400,
-            i.height = 200,
-            $.fillStyle = "#0000",
-            $.fillRect(0, 0, i.width, i.height),
-            $.font = "900 90px asap",
-            $.fillStyle = "#acacac",
-            $.textAlign = "center",
-            $.textBaseline = "middle",
-            $.fillText('404', i.width / 2, i.height / 2),
-            i.toDataURL())
-          }
-          ;
-          !e.classList.contains('g') && (k = document.createElement('figure'),
-          k.innerHTML = `by <b>${(new URL(e.src || 'http://example.com')).origin}</b>`,
-          e.after(k))
-        }
-        )
-      }
-      )(document.querySelectorAll('article img'))
-    }
-    )();
-    article = document.querySelector('article');
-    ((n = (new Date).getHours()) > 17 || n < 7) && document.documentElement.classList.toggle("dark-css");
-  </script>
   <script>
-
-
+    if(window.Telegram&&window.Telegram.WebApp.initDataUnsafe.user) {
+        window.Telegram.WebApp.onEvent('viewportChanged', function() {
+            window.Telegram.WebApp.expand()
+        });
+        window.Telegram.WebApp.expand()
+ 
+     }else{
+      alert("67")
+    }
   </script>
 </html>
