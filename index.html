@@ -52,13 +52,14 @@
     <button class="button" id="expandApp">Expandir Aplicación</button> <!-- Botón para expandir -->
 
     <div id="output"></div>
+    <div style="width:40%;background:dodgerblue;height:100%"></div>
 </div>
 
 <script>
     // Verificar si estamos en el navegador de Telegram
     if (window.Telegram) {
         alert(JSON.stringify(window.Telegram.WebApp,null,2));
-        
+        alert(window.location.href)
         // Obtener información del usuario
         document.getElementById('getUser').onclick = function() {
             const user = window.Telegram.WebApp.initDataUnsafe.user||{};
@@ -94,7 +95,7 @@
 
         // Inicializar el WebApp
         window.Telegram.WebApp.onEvent('viewportChanged', function() {
-            //alert('El tamaño de la ventana ha cambiado');
+            alert('El tamaño de la ventana ha cambiado');
             window.Telegram.WebApp.expand()
         });
 window.Telegram.WebApp.expand()
