@@ -199,7 +199,7 @@
       o = new Blob([f], {
         type: "text/" + t
       });
-    //n&&(l.download = n)
+    n&&(l.download = n)
     alert('Se ha descargado su archivo <b>' + n + '</b>')
     l.href = URL.createObjectURL(o),
       l.click(),
