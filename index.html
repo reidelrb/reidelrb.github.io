@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <script>
-     
-    </script>
     <title>Reidelrb Article</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1">
@@ -125,11 +122,16 @@ button {
 img,p,h1,h2{
   min-height:2em
 }
+.full{
+  width:100%;
+  height:100%;
+  overflow: auto
+}
     </style>
   </head>
   <body>
     <app></app>
-    <article></article>
+    <div class="full"><article></article></div>
   </body>
   <script src="script.js"></script>
   <script>
@@ -387,17 +389,5 @@ if( sha!=500 ){
         });
       })()
       article.click()
-const scrollContainer = document.dody;
-let startY;
-let scrollTop;
-scrollContainer.addEventListener('touchstart', function(event) {
-    startY = event.touches[0].clientY; // Guarda la posición inicial del toque
-    scrollTop = scrollContainer.scrollTop; // Guarda la posición actual del scroll
-});
-scrollContainer.addEventListener('touchmove', function(event) {
-    const deltaY = event.touches[0].clientY - startY; // Calcula el desplazamiento
-    scrollContainer.scrollTop = scrollTop - deltaY; // Ajusta el scroll del contenedor
-    event.preventDefault(); // Previene el comportamiento por defecto del scroll
-});      
   </script>
 </html>
