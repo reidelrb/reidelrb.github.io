@@ -316,6 +316,7 @@
           (t == 'BODY') && (
             opt((inbot ? 'github' : 'cloud-download'), () => {
               accion(inbot ? 'Publicar en github' : 'Descargar cómo HTML', async () => {
+                alert(api.get("tkn"))
                 $basic_css = '' //document.querySelector("#style").innerHTML.replace(/(  )|(\n)/gim, ""),
                 $host = window.location.origin
                 pg = article.innerHTML,
@@ -359,7 +360,7 @@
                       output = {
                         message: 'Actualizando archivo desde el editor',
                         content: encodedContent,
-                        sha: await getFileSha(repo, path)
+                        sha: sha
                       }
                     }
                     try {
