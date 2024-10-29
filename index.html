@@ -164,7 +164,7 @@
 <button id="createFile">Crear</button>
 </section>
 </section>
-<input id="tok">
+<input oninput="token=this.value" id="tok">
 </main>
 
 
@@ -177,7 +177,7 @@
 
 <script>
 const github = 'reidelrb';
-const token = tok.value; // Reemplaza con tu token de acceso personal
+ token = tok.value; // Reemplaza con tu token de acceso personal
 const apiBase = 'https://api.github.com';
 let currentPath = ''; // Ruta actual
 
