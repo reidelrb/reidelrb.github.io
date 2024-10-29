@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  
   <title>Reidelrb Article</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1">
@@ -19,7 +20,8 @@
   const api = new URLSearchParams(window.location.search)
   const repo = 'reidelrb/reidelrb.github.io' || (window.location.hostname).split('.')[0] + '/' + (window.location.hostname);
   token = atob(api.get("tkn"))
-
+alert(token)
+alert(window.location.href)
                   path = `${user.username}.html`
                   async function getFileSha() {
                     try {
