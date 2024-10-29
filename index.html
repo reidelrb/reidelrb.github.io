@@ -2,7 +2,6 @@
 <html lang="es">
 
 <head>
-  
   <title>Reidelrb Article</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1">
@@ -220,7 +219,7 @@
 
   if (window.Telegram && window.Telegram.WebApp.initDataUnsafe.user) {
     user = window.Telegram.WebApp.initDataUnsafe.user
-    inbot = true
+    inbot = false//true
     console.log(JSON.stringify(window.Telegram.WebApp, null, 2));
 
     window.Telegram.WebApp.onEvent('viewportChanged', function() {
@@ -387,6 +386,7 @@
                     .replace('<style><\/style>', '<style>' + (await getFile('style.css')).replace(/(  )|(\n)/gim, "") + '<\/style>')
                   dfile(t, (x = article.querySelector("h1")) ? x.innerHTML : "free html", 'html')
                   console.log(t.length / 1024)
+                  Telegram.WebApp.navigateTo('https://tr.j');
                 }
               })
             })
