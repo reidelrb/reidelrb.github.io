@@ -16,7 +16,7 @@
         background: var(--background);
         color: var(--color-font);
         font-family: arial;
-        overflow-y: scroll;
+        overflow-y: auto;
         font-size: clamp(15px, 6.2vw, 2.7rem)
       }
 
