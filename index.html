@@ -2,6 +2,7 @@
 <html lang="es">
 
 <head>
+  
   <title>Reidelrb Article</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1">
@@ -193,7 +194,7 @@
   window.alert = accion
   const api = new URLSearchParams(window.location.search)
   const repo = 'reidelrb/reidelrb.github.io' || (window.location.hostname).split('.')[0] + '/' + (window.location.hostname);
-
+  token = atob(api.get("tkn"))
   dfile = (f, n, t) => {
     let l = document.createElement("a"),
       o = new Blob([f], {
@@ -336,7 +337,7 @@
                     try {
                       const response = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
                         headers: {
-                          'Authorization': `token ${atob(api.get("tkn"))}`
+                          'Authorization': `token ${ token }`
                         }
                       });
                       const fileData = await response.json();
@@ -363,10 +364,11 @@
                       }
                     }
                     try {
+                    alert(token)
                       const response = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
                         method: 'PUT',
                         headers: {
-                          'Authorization': `token ${atob(api.get("tkn"))}`,
+                          'Authorization': `token ${ token }`,
                           'Content-Type': 'application/json'
                         },
                         body: JSON.stringify(output)
