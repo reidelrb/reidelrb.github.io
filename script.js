@@ -6,8 +6,8 @@ const footer = document.createElement('footer');
   <div class="content">
     <section class="share">
       <span>Share on</span>
-      <label data-share="https://t.me/share/url?url=[host]&text=[title]" class="bi-telegram"></label>
-      <label data-share="https://api.whatsapp.com/send?text=[host] [title]" class="bi-whatsapp"></label>
+      <label data-share="tg:msg_url?url=[host]&text= [title]" class="bi-telegram"></label>
+      <label data-share="whatsapp://send/?text=[host] [title]" class="bi-whatsapp"></label>
       <label data-share="" class="bi-share-fill"></label>
     </section>
     <div>
