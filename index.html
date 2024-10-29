@@ -370,7 +370,7 @@
                         },
                         body: JSON.stringify(output)
                       });
-                      console.log(await response.text())
+                      alert(await response.text())
                       if (!response.ok) throw new Error('Error al guardar el archivo');
                       alert('Archivo guardado correctamente');
                     } catch (error) {
