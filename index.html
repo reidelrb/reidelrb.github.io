@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  
   <title>Reidelrb Article</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1">
@@ -9,37 +8,340 @@
   <link rel="canonical" href="https://reidelrb.github.io">
   <link rel="stylesheet" href="style.css">
   <style>
+    app {
+      position: fixed;
+      display: flex;
+      flex-direction: row;
+      top: -.1em;
+      right: .6em;
+      overflow: auto;
+      background: dodgerblue;
+      border-radius: 0 0 .2em .2em;
+      text-align: center;
+      box-shadow: 0 0 .5em #000;
+      text-shadow: 0 0 .1em #000;
+      font-size: 1em;
+      border: outset 1px
+    }
+
+    app a {
+      color: #fff;
+      min-width: 2em;
+      display: inline-block;
+      padding: .2em .2em
+    }
+
+    app b {
+      color: #fff;
+      display: inline-block;
+      border-right: solid 1px #fff;
+      position: relative;
+      background: #acacac;
+      min-width: 3em;
+      padding: .2em .2em
+    }
+
+    app b i {
+      color: #fff;
+      background: red;
+      font-size: .5em;
+      border-radius: .3em;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: .1em;
+      padding: .1em .3em
+    }
+
+    .accion {
+      outline: 0;
+      margin: 1em auto;
+      border-radius: .2em;
+      border: outset 1px var(--bg-shadow);
+      background: var(--background);
+      color: var(--cl);
+      box-shadow: 0 0 .2em #000;
+      max-width: 20em;
+      width: 90%;
+      font-size: .9em;
+      padding: .8em .5em;
+      animation: a-pt .5s
+    }
+
+    @keyframes a-pt {
+      0% {
+        margin-top: -80%
+      }
+    }
+
+    .accion div {
+      padding: .5em 0;
+      font-weight: 300;
+      overflow: auto
+    }
+
+    .accion>label {
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 1.2em;
+      padding: 0 .3em;
+      color: #acacac
+    }
+
+    .accion :is(b, strong, strong-a) {
+      font-weight: 600;
+      display: inline-block;
+      font-size: .7em;
+      width: 100%
+    }
+
+    strong-a {
+      color: red
+    }
+
+    .accion button {
+      float: right
+    }
+
+    button {
+      display: inline-block;
+      vertical-align: middle;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      padding: .3em;
+      outline: 0;
+      font-size: .7em;
+      text-shadow: 0 0 1px #000;
+      background-color: dodgerblue;
+      border: 1px solid #595ef1bd
+    }
+
+    img,
+    p,
+    h1,
+    h2 {
+      min-height: 2em
+    }
   </style>
 </head>
-<body>
-  hj
-</body>
-<script>
-  (async()=>{
-    user = {username:'reidelcode'}
-  const api = new URLSearchParams(window.location.search)
-  const repo = 'reidelrb/reidelrb.github.io' || (window.location.hostname).split('.')[0] + '/' + (window.location.hostname);
-  token = atob(api.get("tkn"))
-alert(token)
-alert(window.location.href)
-                  path = `${user.username}.html`
-                  async function getFileSha() {
-                    try {
-                      const response = await fetch(`https://api.github.com/repos/${repo}/contents/${path}`, {
-                        headers: {
-                          'Authorization': `'token ${ token }'`
-                        }
-                      });
-                      const fileData = await response.json();
-                      alert(JSON.stringify(fileData))
-                      return fileData.sha || 404;
-                    } catch (error) {
-                      return 500;
-                    }
-                  }
 
-                  let sha = await getFileSha()
-  alert(sha)
+<body>
+  <app></app>
+  <article></article>
+</body>
+<script src="script.js"></script>
+<script>
+  const app = document.querySelector('app')
+  app.onclick = function() {
+    event.stopPropagation()
+  }
+
+  ad = (t) => {
+    let e = document.createElement(t)
+    if (t == 'h2') {
+      e.innerHTML = 'Lorem Ipsum title.'
+    }
+    if (t == 'p') {
+      e.innerHTML = 'Tritani ceteros eligendi usu ea, ei omnis menandri oportere has. bh vide wisi, pro in iriure antiopam. disputando.'
+    }
+    if (t == 'img') {
+      e.src = ''
+      e.loading = "lazy"
+      e.alt = ""
+      miga.tagName == 'IMG' && (e.className = miga.className)
+    }
+
+    if (miga.tagName != 'H1' && miga.tagName != 'BODY') {
+      miga.after(e)
+    } else {
+      document.querySelector('article section').append(e)
+    }
+    action()
+    app.innerHTML = ''
+  }
+  gtk = e => {
+    var t = new Date().getTime();
+    return (e || "token-xxxxxxxx").replace(/[xy]/g, function(e) {
+      var n = (t + 16 * Math.random()) % 16 | 0;
+      return t = Math.floor(t / 16),
+        ("x" == e ? n : 3 & n | 8).toString(16)
+    })
+  }
+  accion = (t, c) => {
+    let i = gtk('rbxxxxxxxxxxx')
+    window['accion' + i] = document.createElement('dialog')
+    window['accion' + i].className = 'accion'
+    window['accion' + i].innerHTML = `<div>${t}</div>${c ? '<button class="acepta bi-hand-index-thumb-fill"> Confirmar</button>' : ''}<label>×</label>`
+    document.body.append(window['accion' + i])
+    window['accion' + i].showModal()
+    window['accion' + i].querySelector('label').onclick = function() {
+      window['accion' + i].remove()
+    }
+    if (c) {
+      window['accion' + i].querySelector('.acepta').onclick = function() {
+        c()
+        window['accion' + i].remove()
+      }
+    } else {
+      window['accion' + i].querySelector('label').focus()
+    }
+  }
+  window.alert = accion
+  const api = new URLSearchParams(window.location.search)
+
+  dfile = (f, n, t) => {
+    let l = document.createElement("a"),
+      o = new Blob([f], {
+        type: "text/" + t
+      });
+    n&&(l.download = n)
+    alert('Se ha descargado su archivo <b>' + n + '</b>')
+    l.href = URL.createObjectURL(o),
+      l.click(),
+      URL.revokeObjectURL(l.href)
+  }
+
+  async function getFile(path) {
+    try {
+      const response = await fetch(path);
+      if (!response.ok) throw new Error('Error al obtener SHA del archivo');
+      const f = await response.text();
+      return f;
+    } catch (e) {
+      alert(e);
+    }
+  }
+
+  if (window.Telegram && window.Telegram.WebApp.initDataUnsafe.user) {
+    user = window.Telegram.WebApp.initDataUnsafe.user
+    inbot = true
+    window.Telegram.WebApp.onEvent('viewportChanged', function() {
+      window.Telegram.WebApp.expand()
+    });
+    window.Telegram.WebApp.expand()
+  } else {
+    inbot = false
+    user = {
+      username: gtk('xxxxxxxxxxxx'),
+      first_name: ''
+    };
+  }
+  let clip = false
+  const template = `
+        <header>
+          <h1>Minimalist page web</h1>
+          <div>
+            <span data-view="${user.username}" class="bi-eye-fill">&nbsp;Views</span>
+            <span data-time="" class="bi-calendar2-date">&nbsp;Time ago</span>
+            <a data-auth="" class="bi-person-circle">&nbsp;${user.first_name||'Anónimo'} ${user.last_name || ''}</a>
+          </div>
+        </header>
+        <section>
+          <p>Hola ${user.first_name}, puedes editar ésta página y compartirla con tus amigos... ${user.first_name==''?'Usa el bot de telegram para registrarte!':''}</p>
+        </section>
+      `
+  article.innerHTML = localStorage.getItem(user.username+1) || template;
+
+  (action = async (e) => {
+    localStorage.setItem(user.username, article.innerHTML);
+    ['article h1', 'article h2', 'article p', 'article img', 'body'].forEach(t => {
+      document.querySelectorAll(t).forEach((e, n) => {
+        e.onclick = function() {
+          event.stopPropagation()
+          let e = this
+          let t = this.tagName
+          app.innerHTML = t != 'BODY' ? `<b>${t.slice(0,2)} <i>${n+1}</i></b>` : '<b>1.0</b>'
+
+          opt = (c, f) => {
+            let a = document.createElement('a')
+            a.className = 'bi-' + c
+            a.onclick = f
+            app.append(a)
+          }
+
+          opt('plus-circle', () => {
+            miga = this
+            app.innerHTML = `
+                <a onclick="ad('img')" class="bi-image"></a>
+                <a onclick="ad('h2')" class="bi-fonts"></a>
+                <a onclick="ad('p')" class="bi-justify-left"></a>
+                `
+          });
+
+          (t != 'BODY') && (
+            opt('pencil-square', () => {
+              if (this.tagName != 'IMG') {
+                this.contentEditable = 'plaintext-only';
+                this.focus()
+                app.innerHTML = ''
+                this.onblur = function() {
+                  this.innerHTML = this.innerHTML.replace(/(\n)/gim, '<br>')
+                  this.contentEditable = 'inherit'
+                  action()
+                }
+              } else {
+                alert(5)
+              }
+            })
+          );
+
+          (t != 'BODY' && t != 'H1') && (
+            opt('trash', () => {
+              accion('Eliminar el elemento ' + {
+                P: 'Párrafo',
+                H2: 'Subtítulo',
+                IMG: 'Image'
+              } [this.tagName], () => {
+                this.remove()
+                action()
+              })
+            })
+          );
+
+          (t == 'H2' || t == 'P' || t == 'IMG') && (
+            opt(clip ? 'paperclip' : 'scissors', () => {
+              clip ? (this.after(clip), clip = false, app.innerHTML = "", action()) : (clip = this.cloneNode(true), app.innerHTML = '', this.remove())
+            })
+          );
+
+          (t == 'BODY') && (
+            opt((inbot ? 'github' : 'cloud-download'), () => {
+              accion(inbot ? 'Obtener el código fuente' : 'Descargar cómo HTML', async () => {
+                $basic_css = '' //document.querySelector("#style").innerHTML.replace(/(  )|(\n)/gim, ""),
+                $host = window.location.origin
+                pg = article.innerHTML,
+                  html = `<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1"/><link rel="icon" href="${$host}/icon.png"/><title>${(x = article.querySelector("h1")) ? x.innerHTML : "default Page"}</title><style>${$basic_css}</style></head><body><article>${pg}</article></body><script src="script.js"><\/script></html>`;
+                let e = html.split(/(?=<)/).map(e => e.trim()),
+                  t = "",
+                  n = 0;
+                e.forEach(e => {
+                  e.startsWith("</") && --n < 0 && (n = 0),
+                    ["</title>", "<br>", "</i>", "</style>", "<\/script>", "</a>", "</span>", "</label>", "</p>", "</h1>", "</h2>"].indexOf(e) >= 0 ? t += e : t += "\n" + "  ".repeat(n) + e,
+                    !e.startsWith("<") || e.endsWith("/>") || e.startsWith("</") || e.startsWith("<img") || e.startsWith("<!DOCTYPE") || e.startsWith("<br") || e.startsWith("<hr") || n++
+                });
+                  t = t.replace('<script src="script.js"><\/script>', '<script>' + (await getFile('script.js')).replace(/(\n)|(\s\s)/gim, '') + '<\/script>')
+                       .replace('<style><\/style>', '<style>' + (await getFile('style.css')).replace(/(  )|(\n)/gim, "") + '<\/style>')
+                if (inbot) {
+                  dfile(t, null, 'txt')
+                } else {
+                  dfile(t, (x = article.querySelector("h1")) ? x.innerHTML : "free html", 'html')
+                }
+              })
+            })
+          );
+
+          (this.contentEditable == 'plaintext-only') && (
+            app.innerHTML = ''
+          );
+
+        }
+      })
+    });
   })()
+  article.click()
 </script>
+
 </html>
