@@ -1,14 +1,635 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <title>Reidelrb Article</title>
   <meta charset="UTF-8">
-  <title>Título de la página</title>
-    <meta property="og:title" content="Título de tu Página">
-    <meta property="og:description" content="Descripción de tu Página">
-    <meta property="og:image" content="https://hil.ui">
-    <meta property="og:url" content="https://reidelrb.github.io">
+  <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <link rel="canonical" href="https://reidelrb.github.io">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    app {
+      position: fixed;
+      display: flex;
+      flex-direction: row;
+      top: -.1em;
+      right: .6em;
+      overflow: auto;
+      background: dodgerblue;
+      border-radius: 0 0 .2em .2em;
+      text-align: center;
+      box-shadow: 0 0 .5em #000;
+      text-shadow: 0 0 .1em #000;
+      font-size: 1em;
+      border: outset 1px
+    }
+
+    app a {
+      color: #fff;
+      min-width: 2em;
+      display: inline-block;
+      padding: .2em .2em
+    }
+
+    app b {
+      color: #fff;
+      display: inline-block;
+      border-right: solid 1px #fff;
+      position: relative;
+      background: #acacac;
+      min-width: 3em;
+      padding: .2em .2em
+    }
+
+    app b i {
+      color: #fff;
+      background: red;
+      font-size: .5em;
+      border-radius: .3em;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: .1em;
+      padding: .1em .3em
+    }
+
+    .accion {
+      outline: 0;
+      margin: 1em auto;
+      border-radius: .2em;
+      border: outset 1px var(--bg-shadow);
+      background: var(--background);
+      color: var(--cl);
+      box-shadow: 0 0 .2em #000;
+      max-width: 20em;
+      width: 90%;
+      font-size: .9em;
+      padding: .8em .5em;
+      animation: a-pt .5s
+    }
+
+    @keyframes a-pt {
+      0% {
+        margin-top: -80%
+      }
+    }
+
+    .accion div {
+      padding: .5em 0;
+      font-weight: 300;
+      overflow: auto
+    }
+
+    .accion>label {
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 1.2em;
+      padding: 0 .3em;
+      color: #acacac
+    }
+
+    .accion :is(b, strong, strong-a) {
+      font-weight: 600;
+      display: inline-block;
+      font-size: .7em;
+      width: 100%
+    }
+
+    strong-a {
+      color: red
+    }
+
+    .accion button {
+      float: right
+    }
+
+    button {
+      display: inline-block;
+      vertical-align: middle;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      padding: .3em;
+      outline: 0;
+      font-size: .7em;
+      text-shadow: 0 0 1px #000;
+      background-color: dodgerblue;
+      border: 1px solid #595ef1bd
+    }
+
+    img,
+    p,
+    h1,
+    h2 {
+      min-height: 2em
+    }
+
+#gl {
+  width: 100%;
+  height: 100%;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.4);
+  color: #fff
+}
+#gl #fts{
+  background: var(--background);
+  margin: auto auto 0;
+  width: 98%;
+  max-width: 27em;
+  max-height: 70%;
+  border-radius: .5em .5em 0 0;
+  box-shadow: 0 0 1em #000;
+  overflow: auto;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap:wrap;
+  position: relative;
+  border: solid .1em var(--bg-shadow);
+  border-top: solid 2em var(--bg-shadow)
+}
+#fts img {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  overflow: hidden;
+  display: inline!important;
+  margin: .1em;
+  width: calc(33.333% - .2em);
+}
+
+      #loading,.g-recaptcha {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        background: rgba(0,0,0,0.4);
+        color: #fff
+      }
+  dialog{
+    position:fixed
+  }    
+  </style>
 </head>
 <body>
-  hjj
+  <article></article>
+  <app></app>
+  <div class="loading"></div>
+  <div id="gl">
+    <div id="fts">
+  <img src="https://pbs.twimg.com/media/Ea_91huUYAA8a4C.jpg:large" alt="TW Pornstars - Max Arion - The PONY. Twitter. Day of Rest. More at ..." class="mini" loading="lazy">
+  <img src="https://cdn.mansurfer.com/videos/b/2/b2i300/temp/00000001.jpg" alt="Jeffrey Lloyd, Manuel Skye &amp; Max Arion - Gay Porn - Lucas ..." class="mini" loading="lazy">
+  <img src="https://cdn-w.lucasentertainment.com/lucasentertainment/content/models/Max_Arion/gallery/LVP307_Max_Arion_01.jpg" alt="Max arion | LPSG" class="mini" loading="lazy">
+  <img src="https://cdn-w.lucasentertainment.com/lucasentertainment/content/models/Max_Arion/gallery/LVP307_Max_Arion_03.jpg" alt="Max arion | LPSG" class="mini" loading="lazy">
+  <img src="https://pbs.twimg.com/media/GHIw3q_bUAAGzVS?format=jpg&amp;name=large" alt="Max Arion - the PONY (@MaxArionxxx) / X" class="mini" loading="lazy">
+  <img src="https://cdn2.gay0day.com/contents/videos_screenshots/193000/193441/preview.jpg" alt="Max Arion, Louis Ricaute &amp; Tomas Brand watch online" class="mini" loading="lazy">
+  <img src="https://www.lucasentertainment.com/wp-content/uploads/2023/01/LVP327_04_Max_Arion_Dakota_Payne_Edison_Fuller_06.jpg" alt="Max Arion | Gay Model | Lucas Entertainment" class="mini" loading="lazy">
+      <img src="https://i.pinimg.com/236x/f9/01/35/f901355ac7f432ef2234fc1f548fc163.jpg" loading="lazy" alt="">
+      <img src="https://b-gay.com/wp-content/uploads/2016/02/31079678_m.jpg" alt="" loading="lazy">
+      <img src="https://media-2-albums.gayboystube.com/contents/albums/sources/1415000/1415596/190609637.jpg" alt="" loading="lazy">
+      <img src="https://tse3.mm.bing.net/th?id=OIP.kFMLoUiCMy1HBiYtV1IKWAHaE7&pid=15.1" alt="" loading="lazy">
+      <img src="https://noesotrobloggay.com/wp-content/uploads/2024/10/Braxton-Cruz-Brogan-780x470.webp" alt="" loading="lazy">    
+    </div>
+  </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/eruda"></script>
+<script src="script.js"></script>
+<script>
+  //try{eruda.init()}catch(e){};
+  const vs = '1.17'
+  const app = document.querySelector('app')
+  app.onclick = function() {
+    event.stopPropagation()
+  }
+  gl.onclick = function() {
+    this.style.display="none"
+    event.stopPropagation()
+    action()
+  }
+  
+  let fN = {}
+  
+  ad = (t) => {
+    let e = document.createElement(t)
+    if (t == 'h3') {
+      e.innerHTML = 'Lorem Ipsum title.'
+    }
+    if (t == 'p') {
+      e.innerHTML = 'Tritani ceteros eligendi usu ea, ei omnis menandri oportere has. bh vide wisi, pro in iriure antiopam. disputando.'
+    }
+    if (t == 'img') {
+      e.src = ''
+      e.loading = "lazy"
+      e.alt = ""
+      fN = e
+      gl.style.display ="flex"
+      miga.tagName == 'IMG' && (e.className = miga.className)
+    }
+
+    if (miga.tagName != 'H1' && miga.tagName != 'BODY') {
+      miga.after(e)
+    } else {
+      document.querySelector('article section').append(e)
+    }
+    action()
+    app.innerHTML = ''
+  }
+  gtk = e => {
+    var t = new Date().getTime();
+    return (e || "token-xxxxxxxx").replace(/[xy]/g, function(e) {
+      var n = (t + 16 * Math.random()) % 16 | 0;
+      return t = Math.floor(t / 16),
+        ("x" == e ? n : 3 & n | 8).toString(16)
+    })
+  }
+  accion = (t, c) => {
+    let i = gtk('rbxxxxxxxxxxx')
+    window['accion' + i] = document.createElement('dialog')
+    window['accion' + i].className = 'accion'
+    window['accion' + i].innerHTML = `<div>${t}</div>${c ? '<button class="acepta bi-hand-index-thumb-fill"> Confirmar</button>' : ''}<label>×</label>`
+    document.body.append(window['accion' + i])
+    window['accion' + i].showModal()
+    window['accion' + i].querySelector('label').onclick = function() {
+      window['accion' + i].remove()
+    }
+    if (c) {
+      window['accion' + i].querySelector('.acepta').onclick = function() {
+        c()
+        window['accion' + i].remove()
+      }
+    } else {
+      window['accion' + i].querySelector('label').focus()
+    }
+  }
+  window.alert = accion
+  const api = new URLSearchParams(window.location.search)
+
+  dfile = (f, n, t) => {
+    let l = document.createElement("a"),
+      o = new Blob([f], {
+        type: "text/" + t
+      });
+    //n&&(l.download = n)
+    alert('Se ha descargado su archivo <b>' + n + '</b>')
+    l.href = URL.createObjectURL(o),
+      l.click(),
+      URL.revokeObjectURL(l.href)
+  }
+
+  async function getFile(path) {
+    try {
+      const response = await fetch(path);
+      if (!response.ok) throw new Error('Error al obtener SHA del archivo');
+      const f = await response.text();
+      return f;
+    } catch (e) {
+      alert(e);
+    }
+  }
+
+  let inbot = false
+  let user = {
+    username: gtk('xxxxxxxxxxxx'),
+    first_name: ''
+  };
+
+  if (window.Telegram && window.Telegram.WebApp.initDataUnsafe.user) {
+    user = window.Telegram.WebApp.initDataUnsafe.user
+    inbot = true
+    window.Telegram.WebApp.onEvent('viewportChanged', function() {
+      window.Telegram.WebApp.expand()
+    });
+    window.Telegram.WebApp.expand()
+  }
+  let clip = false
+  const template = `
+        <header>
+          <h1>Minimalist page web</h1>
+          <div>
+            <span data-view="${user.username}" class="bi-eye-fill">&nbsp;Views</span>
+            <span data-time="" class="bi-calendar2-date">&nbsp;Time ago</span>
+            ${user.first_name?`<a data-auth="${user.username}" class="bi-person-circle">&nbsp;${user.first_name} ${user.last_name}</a>`:''}
+          </div>
+        </header>
+        <section>
+          <p>Hola ${user.first_name}, puedes editar ésta página y compartirla con tus amigos... ${user.first_name==''?'Usa el bot de telegram para publicarla en telegra.ph':''}</p>
+        </section>
+      `;
+
+  (action = async (e) => {
+    document.querySelectorAll('#fts img').forEach(f=>{
+      f.onclick=function(){
+        fN.src=this.src
+        fN.click()
+      }
+      f.oncontextmenu=function(){
+        accion('¿Eliminar esta foto?',()=>{
+          this.remove()
+        })
+      }
+    });
+    
+    record();
+
+    ['article h1', 'article h3', 'article p', 'article img', 'body'].forEach(t => {
+      document.querySelectorAll(t).forEach((e, n) => {
+        e.onclick = function() {
+          event.stopPropagation()
+          let e = this
+          let t = this.tagName
+          app.innerHTML = t != 'BODY' ? `<b>${t} <i>${n+1}</i></b>` : '<b>'+vs+'</b>'
+
+          opt = (c, f) => {
+            let a = document.createElement('a')
+            a.className = 'bi-' + c
+            a.onclick = f
+            app.append(a)
+          }
+
+          opt('plus-circle', () => {
+            miga = this
+            app.innerHTML = `
+                <a onclick="ad('img')" class="bi-image"></a>
+                <a onclick="ad('h3')" class="bi-fonts"></a>
+                <a onclick="ad('p')" class="bi-justify-left"></a>
+                `
+          });
+
+          (t != 'BODY') && (
+            opt('pencil-square', () => {
+              if (this.tagName != 'IMG') {
+                this.contentEditable = 'plaintext-only';
+                this.focus()
+                app.innerHTML = ''
+                this.onblur = function() {
+                  this.innerHTML = this.innerHTML.replace(/(\n)/gim, '<br>')
+                  this.contentEditable = 'inherit'
+                  action()
+                }
+              } else {
+                fN = this
+                gl.style.display="flex"
+              }
+            })
+          );
+
+          (t != 'BODY' && t != 'H1') && (
+            opt('trash', () => {
+              accion('Eliminar el elemento ' + {
+                P: 'Párrafo',
+                H2: 'Subtítulo',
+                IMG: 'Image'
+              } [this.tagName], () => {
+                this.remove()
+                action()
+              })
+            })
+          );
+
+          (t == 'H3' || t == 'P' || t == 'IMG') && (
+            opt(clip ? 'paperclip' : 'scissors', () => {
+              clip ? (this.after(clip), clip = false, app.innerHTML = "", action()) : (clip = this.cloneNode(true), app.innerHTML = '', this.remove())
+            })
+          );
+
+          (t == 'BODY') && (
+            opt((inbot ? 'telegram' : 'cloud-download'), () => {
+              accion(inbot ? 'Publicar en telegra.ph' : 'Descargar cómo HTML', async () => {
+                if (inbot) {
+    const te = document.querySelector('h1').innerHTML;
+    const hd = `&author_name=${user.first_name}%20${user.last_name}`;
+
+let page = [];
+(childs=(e)=>{
+if(e){
+  let t = (e.tagName).toLowerCase()
+  o = {tag:t};
+  (t=='p'||t=='h3')&&(o.children=[e.innerHTML.replace(/(<br>)/gim,'\n')])
+  t=='img'&&(o.attrs={src:e.src})
+  
+  page.push(o)
+  n = e.nextElementSibling
+  n&&(childs(n))
+}else{
+  alert('No hay contenido para publicar')
+  return true
+}
+})(document.querySelector('article section').firstElementChild);
+
+    (async function telegra(){
+       if(!document.querySelector('article header').dataset.path){
+        // crear cuenta
+        fetch_('https://api.telegra.ph/createAccount?short_name='+user.username+hd,(x)=>{
+          document.querySelector('article header').dataset.token = x.result.access_token
+          // crear página
+          console.log( document.querySelector('article header').dataset.token  )
+          fetch_('https://api.telegra.ph/createPage?access_token='+ document.querySelector('article header').dataset.token  +'&title='+user.username+hd+'&content=[{"tag":"p","children":["Hello,+world!"]}]&return_content=true',(x)=>{
+            document.querySelector('article header').dataset.path = x.result.path
+            record()
+            telegra()
+          })
+        })
+      }else{
+        if(page.length>0){
+(async()=>{
+    const url = 'https://api.telegra.ph/editPage';
+    const params = new URLSearchParams({
+        access_token: document.querySelector('article header').dataset.token,
+        title: te,
+        path: document.querySelector('article header').dataset.path,
+        content: JSON.stringify(page),
+        return_url: 'https://telegra.ph/' + te.replace(/s+/g, '-')
+    });
+    try {
+        const response = await fetch(url, {
+            method: 'POST',
+            body: params
+        });
+        const data = await response.json();
+        alert('listo')
+        console.log(data.result.url);
+    } catch (error) {
+        console.error('Error editing page:', error);
+    }
+})()
+        }
+      }
+    })()
+                } else {
+                $basic_css = '' //document.querySelector("#style").innerHTML.replace(/(  )|(\n)/gim, ""),
+                $host = window.location.origin
+                pg = article.innerHTML,
+                  html = `<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1"/><link rel="icon" href="${$host}/icon.png"/><title>${(x = article.querySelector("h1")) ? x.innerHTML : "default Page"}</title><style>${$basic_css}</style></head><body><article>${pg}</article></body><script src="script.js"><\/script></html>`;
+                let e = html.split(/(?=<)/).map(e => e.trim()),
+                  t = "",
+                  n = 0;
+                e.forEach(e => {
+                  e.startsWith("</") && --n < 0 && (n = 0),
+                    ["</title>", "<br>", "</i>", "</style>", "<\/script>", "</a>", "</span>", "</label>", "</p>", "</h1>", "</h2>"].indexOf(e) >= 0 ? t += e : t += "\n" + "  ".repeat(n) + e,
+                    !e.startsWith("<") || e.endsWith("/>") || e.startsWith("</") || e.startsWith("<img") || e.startsWith("<!DOCTYPE") || e.startsWith("<br") || e.startsWith("<hr") || n++
+                });
+                  t = t.replace('<script src="script.js"><\/script>', '<script>' + (await getFile('script.js')).replace(/(\n)|(\s\s)/gim, '') + '<\/script>')
+                       .replace('<style><\/style>', '<style>' + (await getFile('style.css')).replace(/(  )|(\n)/gim, "") + '<\/style>')
+                  dfile(t, (x = article.querySelector("h1")) ? x.innerHTML : "free html", 'html')
+                }
+              })
+            })
+          );
+
+          (this.contentEditable == 'plaintext-only') && (
+            app.innerHTML = ''
+          );
+
+        }
+      })
+    });
+  })
+
+record = ()=>{
+  putDB(article.innerHTML.replace(/(checked=\"\")|(flex;)|(none;)|(class="select")|(contenteditable="plaintext-only")|(class="")/gim, ''))
+  putDB(document.querySelector('#fts').innerHTML, 'fts')
+}
+
+const copyToClip = async str => {
+  try {
+    await navigator.clipboard.writeText(str);
+    alert("Copiado en el portapapeles!")
+  } catch (e) {
+    alert(e);
+  }
+}
+
+load = (a)=>{
+  document.querySelector('.loading').style.display = a ? 'flex' : 'none'
+}
+
+const fetch_ = async(url,callback)=>{
+  console.log(url)
+  load(true)
+  try{
+    let response = await fetch(url,{
+      headers:{},
+      method:'GET'
+    });
+    load()
+    if (response.ok) {
+      try{
+        json = await response.json();
+        console.log(JSON.stringify(json,null,2))
+      }catch(e){
+        json={error:e.name}
+      }
+      callback&&(callback(json))
+    } else {
+      callback&&(callback({error: response.status}))
+    }
+  }catch(e){
+    load()
+    alert('Error '+e.message)
+  }
+}
+
+  const $app_name = '@article'
+  const $project = 'page'
+  let openRequest = indexedDB.open($app_name, 1);
+  openRequest.onupgradeneeded = function() {
+    let db = openRequest.result;
+    if (!db.objectStoreNames.contains($app_name)) {
+      db.createObjectStore($app_name, {
+        keyPath: 'id'
+      });
+      console.log($app_name + ' instalado con éxito')
+    }
+  }
+  openRequest.onerror = function() {
+    console.error("Error", openRequest.error)
+  }
+  openRequest.onsuccess = function() {
+    db = openRequest.result;
+    console.log($app_name + " cargado")
+    searchDB('fts', (f)=>{
+      f&&(document.querySelector('#fts').innerHTML = f )
+      searchDB($project, (p)=>{
+        if (p) {
+          var d = p
+        } else {
+          var d = template
+        }
+        article.innerHTML = d;
+        ((o)=>{
+          o&&(o.onclick=function(){
+            fetch_(`https://api.counterapi.dev/v1/${this.dataset.view}/counter`,(e)=>{
+              if(e.count){
+                alert(`Ésta página ${e.count==0?'no ha registrado visitas!':'ha registrado '+e.count+' visitas de usuarios con Internet!'}`)
+              }else{
+                e.error==400&&(alert('Aún no se han registrado visitas para esta página!'))
+              }
+            })
+          })
+        })(document.querySelector('[data-view]'));
+        
+        ((o)=>{
+          if(user.first_name){
+            o.innerHTML = ' '+user.first_name
+            o.dataset.auth = ' '+user.username
+          }
+        })(document.querySelector('[data-auth]'));
+        
+        action()
+        article.click()
+      })
+    })
+  }
+
+  searchDB = (t=$app_name,callback)=>{
+    let transaction = db.transaction($app_name);
+    let books = transaction.objectStore($app_name);
+    let request = books.get(t);
+
+    request.onsuccess = function() {
+      if (request.result !== undefined) {
+        console.log("datos en: " + t);
+        callback(request.result.data)
+      } else {
+        callback(false)
+        console.log(t + ": no tiene datos");
+      }
+    }
+  }
+
+  putDB = (d,t=$project)=>{
+    let transaction = db.transaction($app_name, "readwrite");
+    let data = {
+      id: t,
+      data: d
+    }
+    let request = transaction.objectStore($app_name).put(data);
+    request.onsuccess = function(event) {
+      console.log(t + " Save kb " + (d.length / 1024).toFixed(1))
+    }
+    request.onerror = function(event) {
+      console.log(request.error)
+    }
+    transaction.onabort = function() {
+      console.log("Error", transaction.error);
+    }
+  }
+
+
+
+navigator.serviceWorker && navigator.serviceWorker.register("sw.js").then(e=>console.log("service worker registered")).catch(e=>console.log(`Here is the error: ${e}`));
+</script>
 </html>
