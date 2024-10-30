@@ -62,12 +62,12 @@ const footer = document.createElement('footer');
       )(document.querySelector("[data-time]"));
       ((f)=>{
         f.forEach(e=>{
-          if (e.classList.contains('g')) {
+          if (!e.classList.contains('g')) {
             e.onclick = function() {
               $img_open = this;
               v = document.createElement('div');
               v.className = 'fview';
-              v.innerHTML = `<a class="bi-x-circle-fill"></a><img src="${this.src}"><div>${(this.alt || 'Sin info').replace(/[\W]+/gim, ' ')}</div>`;
+              v.innerHTML = `<a class="bi-x-circle-fill"></a><img src="${this.src}">`;
               v.onclick = function() {
                 this.remove()
               }
@@ -79,12 +79,12 @@ const footer = document.createElement('footer');
                 v.onpointerup = function(event) {
                   if ($pi > event.clientX + 150) {
                     let nx = $img_open.nextElementSibling;
-                    nx && nx.classList.contains('g') && (this.remove(),
+                    nx && nx.tagName=='IMG' &&(this.remove(),
                     nx.click())
                   }
                   if ($pi + 150 < event.clientX) {
                     let pv = $img_open.previousElementSibling;
-                    pv && pv.classList.contains('g') && (this.remove(),
+                    pv && pv.tagName=='IMG' &&(this.remove(),
                     pv.click())
                   }
                 }
@@ -110,7 +110,7 @@ const footer = document.createElement('footer');
           ;
           !e.classList.contains('g') && (k = document.createElement('figure'),
           k.innerHTML = `by <b>${(new URL(e.src || 'http://example.com')).origin}</b>`,
-          e.after(k))
+          e.before(k))
         }
         )
       }
