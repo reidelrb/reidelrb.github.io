@@ -20,7 +20,7 @@
         background: var(--background);
         color: var(--color-font);
         font-family: arial;
-        font-size: clamp(15px, 6.2vw, 2.7rem)
+        font-size: clamp(15px, 6.1vw, 2.7rem)
       }
 
       h1 {
@@ -83,17 +83,12 @@
         font-size: 1em
       }
 
-      main {
-        width: 100%;
-        display: block;
-      }
-
       article {
         box-shadow: inset 0 0 4em var(--bg-shadow);
         overflow: hidden;
-        min-height: 70vh;
+        min-height: 80vh;
         width: 100%;
-        padding: 1.5em .3em .2em
+        padding: 1.5em .4em .2em
       }
 
       img {
@@ -126,7 +121,7 @@
         background: var(--footer-bg);
         padding: 1em .5em;
         width: 100%;
-        min-height: 30vh;
+        min-height: 20vh;
         box-shadow: 0 0 1px #000;
         display: flex;
         flex-direction: column;
@@ -211,7 +206,6 @@
       }
 
       @media(min-width: 700px) {
-
         p,
         h3,
         img,
