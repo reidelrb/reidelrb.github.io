@@ -19,7 +19,7 @@ const footer = document.createElement('footer');
   `;
   article.after(footer);
 
-    (()=>{
+    (lib=()=>{
       document.querySelectorAll('.share [data-share]').forEach(a=>{
         a.onclick = function() {
           if (this.dataset.share) {
