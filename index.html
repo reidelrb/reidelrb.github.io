@@ -119,6 +119,19 @@
       border: 1px solid #595ef1bd
     }
 
+.accion input{
+  width: 100%;
+  outline: 0;
+  box-shadow:inset 0 0 5px #acacac;
+  border: none;
+  border-radius: .2em;
+  padding: .4em;
+  font-size: .9em;
+  font-weight: 200;
+  font-family: asap;
+  resize: none;
+  margin: .2em 0
+}
     img,
     p,
     h1,
@@ -126,7 +139,7 @@
       min-height: 2em
     }
 
-#gl {
+#gl,#sh {
   width: 100%;
   min-height: 100%;
   display: none;
@@ -150,7 +163,13 @@
   margin: .1em;
   width: calc( 100%/var(--img) - .2em);
 }
-
+#gale .bi-x-circle-fill{
+  position:fixed;
+  margin:.3em;
+  font-size: 1.5em;
+  color:#000;
+  text-shadow: 0 0 .2em #fff
+}
 #gale{
   width:100%;
   margin:auto auto 0;
@@ -164,6 +183,89 @@
   width:calc(100px + 100px*var(--img))
 }
 
+  .search{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:80%;
+    margin: 1% 10%;
+    background: dodgerblue;
+    display: flex;
+    border-radius: .2em;
+    box-shadow: 0 0 .3em #000
+  }    
+
+.search input {
+  width: 100%;
+  font-size: 1.2em;
+  padding: .3em;
+  box-shadow: inset 0 0 2px #000;
+  border: none;
+  border-radius: .2em
+}
+
+
+div#sh {
+  z-index: 5;
+  padding: .5em;
+  display: none
+}
+#sh img {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  overflow: hidden;
+  display: inline!important;
+  margin: .1em;
+  width: calc(25% - .2em);
+}
+#sh>section {
+  width: 100%;
+  height: 100%;
+  max-width: 25em;
+  overflow: auto;
+  background: var(--background);
+  border-radius: .2em;
+  padding: .1em
+}
+
+#sh>section .box {
+  width: 96%;
+  margin: 2%;
+  position: sticky;
+  top: 2%;
+  padding: .2em;
+  display: flex;
+  border-radius: .2em;
+  background: dodgerblue;
+  box-shadow: 0 0 3px #000;
+}
+#sh>section .box label, .search label {
+  font-size: 1.2em;
+  padding: .3em;
+  color:#fff
+}
+
+#results {
+  padding: .5em 0;
+  display: flex;
+  flex-wrap: wrap;
+  color:var(--color-font);
+  font-size: .7em;
+  text-align:center;
+}
+
+#results div{
+  padding:.6em .1em;
+  position: sticky;
+  bottom:0;
+  width:100%;
+  background: var(--background)
+}
+
+#results div label{
+  padding:.1em;
+  font-size: 1.7em;
+}
       .loading,.g-recaptcha {
         width: 100%;
         height: 100%;
@@ -181,9 +283,9 @@
       .loading{
         text-shadow:0 0 .2em #000
       }
-  dialog{
-    position:fixed
-  }    
+      .hide{
+        display:none
+      }
   </style>
 </head>
 <body>
@@ -192,22 +294,46 @@
   <div class="loading"><h1>Load...</h1></div>
   <div id="gl">
     <div id="gale">
+      <label class="bi-x-circle-fill"></label>
     <div id="fts">
-      <img src="https://pbs.twimg.com/media/Ea_91huUYAA8a4C.jpg:large" alt="TW Pornstars - Max Arion - The PONY. Twitter. Day of Rest. More at ..." class="mini" loading="lazy">
-      <img src="https://cdn.mansurfer.com/videos/b/2/b2i300/temp/00000001.jpg" alt="Jeffrey Lloyd, Manuel Skye &amp; Max Arion - Gay Porn - Lucas ..." class="mini" loading="lazy">
-      <img src="https://cdn-w.lucasentertainment.com/lucasentertainment/content/models/Max_Arion/gallery/LVP307_Max_Arion_01.jpg" alt="Max arion | LPSG" class="mini" loading="lazy">
-      <img src="https://cdn-w.lucasentertainment.com/lucasentertainment/content/models/Max_Arion/gallery/LVP307_Max_Arion_03.jpg" alt="Max arion | LPSG" class="mini" loading="lazy">
-      <img src="https://pbs.twimg.com/media/GHIw3q_bUAAGzVS?format=jpg&amp;name=large" alt="Max Arion - the PONY (@MaxArionxxx) / X" class="mini" loading="lazy">
-      <img src="https://cdn2.gay0day.com/contents/videos_screenshots/193000/193441/preview.jpg" alt="Max Arion, Louis Ricaute &amp; Tomas Brand watch online" class="mini" loading="lazy">
-      <img src="https://www.lucasentertainment.com/wp-content/uploads/2023/01/LVP327_04_Max_Arion_Dakota_Payne_Edison_Fuller_06.jpg" alt="Max Arion | Gay Model | Lucas Entertainment" class="mini" loading="lazy">
-      <img src="https://i.pinimg.com/236x/f9/01/35/f901355ac7f432ef2234fc1f548fc163.jpg" loading="lazy" alt="">
-      <img src="https://b-gay.com/wp-content/uploads/2016/02/31079678_m.jpg" alt="" loading="lazy">
-      <img src="https://media-2-albums.gayboystube.com/contents/albums/sources/1415000/1415596/190609637.jpg" alt="" loading="lazy">
-      <img src="https://tse3.mm.bing.net/th?id=OIP.kFMLoUiCMy1HBiYtV1IKWAHaE7&pid=15.1" alt="" loading="lazy">
-      <img src="https://noesotrobloggay.com/wp-content/uploads/2024/10/Braxton-Cruz-Brogan-780x470.webp" alt="" loading="lazy">    
+      <img src="https://wallpapers.com/images/featured/mejor-p35bw4rf0tq0qv7m.jpg" loading="lazy">
+      <img src="https://img.freepik.com/foto-gratis/astronomia-cielo-nocturno-galactico-ciencia-combinada-ia-generativa_188544-9656.jpg" loading="lazy">
+      <img src="https://wallpapers.com/images/featured/4k-espacio-9w27dqmc4nrs3xwd.jpg" loading="lazy">
+      <img src="https://wallpapers.com/images/featured/hombre-zhtvgv0m39oukzgh.jpg" loading="lazy">
+      <img src="https://wallpapers.com/images/hd/men-phone-3d-triangle-pattern-8jbsxf929fkd6sb8.jpg" loading="lazy">
+      <img src="https://wallpapers.com/images/hd/men-phone-3d-black-blocks-9wqmbybdyyubnmb8.jpg" loading="lazy">
+      <img src="https://images.pexels.com/photos/10999002/pexels-photo-10999002.jpeg" loading="lazy">
+      <img src="https://s0.smartresize.com/wallpaper/284/883/HD-wallpaper-man-alone-dark.jpg" loading="lazy">
+      <img src="https://png.pngtree.com/thumb_back/fw800/background/20230521/pngtree-landscapes-wallpapers-with-mountains-and-caves-image_2669579.jpg" loading="lazy">
+      <img src="https://img.freepik.com/fotos-premium/fondos-paisajes-pacificos-hermosos-paisajes-hermosos-fondos-naturaleza-imagenes_1037362-766.jpg" loading="lazy">
+      <img src="https://wallpapers.com/images/hd/beautiful-scenery-desktop-wallpaper-37j7gek0i5agqrff.jpg" loading="lazy">
+      <img src="https://img.freepik.com/fotos-premium/hermosos-paisajes-lagos-hermosos-paisajos-lagos_1234738-411657.jpg" loading="lazy">
+      <img src="https://www.shutterstock.com/image-photo/big-cottonwood-canyon-scenic-road-600nw-2510178523.jpg" loading="lazy">
+      <img src="https://www.ngenespanol.com/wp-content/uploads/2024/07/por-esto-en-las-cimas-de-las-grandes-montanas-hace-tanto-frio-aunque-esten-mas-cerca-del-sol-770x431.jpg" loading="lazy">
+      <img src="https://www.globalnationalparks.com/es/wp-content/uploads/great-smoky-mountains-national-park-1024x490.jpg" loading="lazy">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Moraine_Lake_17092005.jpg/320px-Moraine_Lake_17092005.jpg" loading="lazy">
+      <img src="https://s1.elespanol.com/2023/04/12/curiosidades/naturaleza-planeta-tierra/755684659_232351312_1024x576.jpg" loading="lazy">
     </div>
+    </div>
+    <div class="search">
+      <label onclick="bbs()" class="bi-google"></label>
+      <input id="search" placeholder="url or topic" type="url">
     </div>
   </div>
+  <div id="mcaptcha" class="g-recaptcha" data-callback="captcha" data-sitekey="6LdE6qgbAAAAANq2Tal4NuP8YdGwtfdTpCLArNE-">7</div>
+<div id="sh">
+  <section>
+    <div class="box">
+      <label onclick=" sh.style.display='none';gl.style.display='flex'; action() " class="bi-x-circle-fill"></label>
+    </div>
+    <div id="results">
+      <p>Error !</p>
+    </div>
+    <div class="hide">
+      <div class="gcse-searchresults-only"></div>
+    </div>
+  </section>
+</div>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
 <script src="script.js"></script>
@@ -218,8 +344,8 @@
   app.onclick = function() {
     event.stopPropagation()
   }
-  gl.onclick = function() {
-    this.style.display="none"
+  gale.onclick = function() {
+    this.parentNode.style.display="none"
     event.stopPropagation()
     action()
   }
@@ -343,9 +469,10 @@
       f.oncontextmenu=function(){
         accion('¿Eliminar esta foto?',()=>{
           this.remove()
+          action()
         })
       }
-      document.documentElement.style.setProperty('--img', nm.length/3 )
+      document.documentElement.style.setProperty('--img', (nm.length/3).toFixed(0))
     });
     
     record();
@@ -356,7 +483,7 @@
           event.stopPropagation()
           let e = this
           let t = this.tagName
-          app.innerHTML = t != 'BODY' ? `<b>${t} <i>${n+1}</i></b>` : '<b>'+vs+'</b>'
+          app.innerHTML = t != 'BODY' ? `<b onclick="article.click()">${t} <i>${n+1}</i></b>` : '<b>'+vs+'</b>'
 
           opt = (c, f) => {
             let a = document.createElement('a')
@@ -465,7 +592,8 @@ if(e){
             body: params
         });
         const data = await response.json();
-        copyToClip(window.location.origin +'/'+document.querySelector('article header').dataset.path)
+        miurl= window.location.origin +'/'+document.querySelector('article header').dataset.path
+        accion(`La URL de acceso a tu página: <input disabled value="${miurl}" type="url"> `,()=>{copyToClip(miurl)})
         load();
     } catch (error) {
         load();
@@ -499,7 +627,6 @@ if(e){
           (this.contentEditable == 'plaintext-only') && (
             app.innerHTML = ''
           );
-
         }
       })
     });
@@ -635,8 +762,115 @@ const fetch_ = async(url,callback)=>{
     }
   }
 
+(minisearch = ()=>{
+  busca = (q,s=0)=>{
+    search.blur()
+    load(true)
+    let z = new Image()
+    z.src = q
+    z.alt = ""
+    z.onload = function() {
+      load()
+      miga.src = this.src
+      miga.alt = this.alt
+      alert('Se ha añadido la imagen de la url')
+      record()
+      action()
+    }
+    z.onerror = function() {
+      load()
+      putSc(`https://cse.google.com/cse/element/v1?rsz=filtered_cse&num=20&start=${s}&hl=es&source=gcsc&cselibv=${goo.cselibv}&searchtype=image&cx=${cx}&q=${q || search.value}&safe=off&cse_tok=${goo.cse_tok}&exp=cc%2Capo&callback=gs${localStorage._grecaptcha ? '&g-recaptcha-response=' + localStorage._grecaptcha : ''}&rurl=http%3A%2F%2Flocalhost%3A8080%2Findex.html`)
+    }
+  }
+  putSc = (d)=>{
+    load(true)
+    let s = document.createElement('script')
+    s.src = d
+    s.onerror = s.onload = function() {
+      this.remove()
+      load()
+    }
+    document.head.append(s)
+  }
+  search.onchange = bbs = function() {
+    sh.style.display = "flex"
+    gl.style.display = "none"
+    goo = JSON.parse(localStorage.goo || "{}")
+    let q = search.value;
+    if (goo.cse_tok) {
+      q.trim() && (busca(q))
+    } else {
+      function handleNewScript(g) {
+        let k = (new URLSearchParams((new URL(g.src)).search))
+        if (k.get('cse_tok')) {
+          goo.cse_tok = k.get('cse_tok')
+          goo.cselibv = k.get('cselibv')
+          localStorage.goo = JSON.stringify(goo)
+          observer.disconnect()
+          busca(k.get('q'))
+          history.replaceState(null, document.title, location.pathname + location.search)
+          alert('El buscador está disponible!')
+          console.log(g.src)
+        }
+      }
+      const observer = new MutationObserver(mutations=>{
+        mutations.forEach(mutation=>{
+          mutation.addedNodes.forEach(node=>{
+            if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'SCRIPT' && (new URLSearchParams((new URL(node.src)).search)).get('cse_tok')) {
+              handleNewScript(node);
+            }
+          }
+          );
+        }
+        );
+      }
+      );
+      observer.observe(document, {
+        childList: true,
+        subtree: true
+      });
+      putSc("https://cse.google.com/cse.js?cx=" + cx)
+      window.location.hash = "#gsc.q=" + q
+    }
+  }
+})()
 
+gimg = (e)=>{
+  e.loading = 'lazy';
+  !document.querySelector('#fts img[src="' + e.src + '"]') && (fts.prepend(e),action())
+  return false
+}
 
+gU = (e)=>{
+  t = ((new URL(e.dataset.src)).host)
+  return t
+}
+gs = (r)=>{
+  console.log(JSON.stringify(r, null, 2))
+  let li = '';
+  if (r.results) {
+    r.results.forEach(o=>{
+      li += `<img onclick="accion('Guardar ésta imagen?<br>'+ gU(this) ,()=>{ load(true);i=new Image(); i.src= this.dataset.src; i.alt=this.alt; i.onload=function(){gimg(this); load();record();fts.scrollTop=0 };i.onerror=function(){load();alert('Error al cargar la imagen')} })" src="${o.tbMedUrl}" data-src="${o.url}" class="mini" alt="${(o.titleNoFormatting.replace(/[\W]+/gim, ' ')).slice(0, 60)}">`
+    }
+    )
+    results.innerHTML = ` ${li} <div>${r.cursor.pages.map((v,n)=>n < 8 ? `<label onclick="busca(null,${n * 20})" class="bi-${n + 1}-square${n == r.cursor.currentPageIndex ? '-fill' : ''}"></label>` : '').join('')}</div><p>Resultados de Google. Pueden estar sujetas a derechos de autor.</p>`
+  } else {
+    captcha = (t)=>{
+      alert(t)
+      localStorage._grecaptcha = t
+      busca();
+      mcaptcha.remove()
+    }
+    if (r.error) {
+      r.error.code == 429 && (alert('Demasiadas búsquedas por el momento! espere 5minutos'),
+      putSc('https://www.google.com/recaptcha/api.js'),
+      mcaptcha.style.display = 'flex')
+      r.error.code == 403 && (localStorage.goo = "{}",
+      bbs())
+    }
+  }
+}
+const cx = "4416977100c5544ee";
 navigator.serviceWorker && navigator.serviceWorker.register("sw.js").then(e=>console.log("service worker registered")).catch(e=>console.log(`Here is the error: ${e}`));
 </script>
 </html>
