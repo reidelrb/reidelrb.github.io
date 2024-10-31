@@ -1,27 +1,81 @@
-   <!DOCTYPE html>
-   <html lang="es">
-   <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Página no encontrada</title>
-       <style>
-           body {
-               font-family: Arial, sans-serif;
-               text-align: center;
-               padding: 50px;
-           }
-           h1 {
-               font-size: 50px;
-           }
-           body {
-               background-color: #f4f4f4;
-           }
-       </style>
-   </head>
-   <body>
-       <h1>404 - Página no encontrada</h1>
-       <p>Lo sentimos, la página que buscas no existe.</p>
-       <a href="/">Volver a la página principal</a>
-   </body>
-   </html>
-   
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    a.telegraph{
+      text-align: center;
+      position: fixed;
+      background: var(--background);
+      left: 0;
+      bottom:0;
+      font-size:.6em;
+      padding: .2em;
+      border-radius: 0 .3em 0 0;
+      box-shadow: 0 0 .2em #000
+    }
+  </style>
+</head>
+<body>
+  <article>
+    <h3>loading...</h3>
+  </article>
+</body>
+<script src="script.js"></script>
+<script>
+
+  draw=(r)=>{
+    if(r.ok){
+      o = r.result
+      if(o.content[0].tag=='br'){
+      article.innerHTML=`
+        <header>
+          <h1>${o.title}</h1>
+          <div>
+            <span data-view="${o.path}" class="bi-eye-fill">&nbsp;Views</span>
+            <span data-time="" class="bi-calendar2-date">&nbsp;Time ago</span>
+            <a data-auth="" href="https://t.me/${o.path.split('-')[0]}" class="bi-telegram">&nbsp;${o.path.split('-')[0]}_</a>
+          </div>
+        </header>
+        <section>
+          ${o.content.map(e=>e.tag=='p'?'<p>'+e.children[0]+'</p>':e.tag=='img'?'<img src="'+e.attrs.src+'" alt="">':e.tag=='h3'?'<h3>'+e.children[0]+'</h3>':'').join('')}
+        </section>
+        <a href="${o.url}" class="telegraph">${o.views} views on telegra.ph</a>
+      `
+      }else{
+      article.innerHTML=`
+        <h3>Error!</h3>
+        <p>No created by bot</p>
+      `
+      }
+      lib()
+    }else{
+      article.innerHTML=`
+        ${
+          r.e == 'Failed to fetch'?`
+        <h1>Error</h1>
+        <p>Sin conexión al sitio</p>
+          `:`
+        <h1>404 Error</h1>
+        <p>No se ha encontrado la página!</p>
+          `
+        }
+      `
+    }
+  };
+
+  (async function getPage(path) {
+    const url = `https://api.telegra.ph/getPage/${path}?return_content=true`;
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      console.log(JSON.stringify(data,null,2));
+      draw(data)
+    } catch (e) {
+      draw({e:e.message});
+    }
+  })(window.location.pathname.replace('/',''))
+</script>
+</html>
