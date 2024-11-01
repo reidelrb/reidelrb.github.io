@@ -20,7 +20,7 @@
         background: var(--background);
         color: var(--color-font);
         font-family: arial;
-        font-size: clamp(15px, 6.1vw, 2.7rem)
+        font-size: clamp(15px, 6vw, 2.7rem)
       }
 
       h1 {
@@ -84,7 +84,7 @@
       }
 
       article {
-        box-shadow: inset 0 0 4em var(--bg-shadow);
+        box-shadow: inset 0 0 .1em var(--bg-shadow);
         overflow: hidden;
         min-height: 80vh;
         width: 100%;
