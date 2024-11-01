@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  <script>
+    window.location.hash = "tgWebAppData=user%3D%257B%2522id%2522%253A6526862605%252C%2522first_name%2522%253A%2522Daniel%2522%252C%2522last_name%2522%253A%2522%2522%252C%2522username%2522%253A%2522dani_dsd%2522%252C%2522language_code%2522%253A%2522es%2522%252C%2522allows_write_to_pm%2522%253Atrue%257D%26chat_instance%3D8687617147785070437%26chat_type%3Dprivate%26auth_date%3D1730077246%26hash%3D910b138b836a4698d1ea5bcb2dc638bb5067a53ff278344a1c18926d7fdd17f6&tgWebAppVersion=7.4&tgWebAppPlatform=android&tgWebAppThemeParams=%7B%22bg_color%22%3A%22%23212d3b%22%2C%22section_bg_color%22%3A%22%231d2733%22%2C%22secondary_bg_color%22%3A%22%23151e27%22%2C%22text_color%22%3A%22%23ffffff%22%2C%22hint_color%22%3A%22%237d8b99%22%2C%22link_color%22%3A%22%235eabe1%22%2C%22button_color%22%3A%22%2350a8eb%22%2C%22button_text_color%22%3A%22%23ffffff%22%2C%22header_bg_color%22%3A%22%23242d39%22%2C%22accent_text_color%22%3A%22%2364b5ef%22%2C%22section_header_text_color%22%3A%22%2379c4fc%22%2C%22subtitle_text_color%22%3A%22%237b8790%22%2C%22destructive_text_color%22%3A%22%23ee686f%22%7D"
+  </script>
   <title>Reidelrb Article</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1">
@@ -129,6 +132,8 @@
   font-size: .9em;
   font-weight: 200;
   font-family: asap;
+  background: #fff;
+  color: #000;
   resize: none;
   margin: .2em 0
 }
@@ -175,11 +180,13 @@
   margin:auto auto 0;
   background: var(--background);
   min-height: 5em;
+  box-shadow: 0 0 1em #000;
   overflow:auto
 }
 #fts{
   display: flex;
   flex-wrap:wrap;
+  padding-bottom: 1em;
   width:calc(100px + 100px*var(--img))
 }
 
@@ -338,7 +345,7 @@ div#sh {
 <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
 <script src="script.js"></script>
 <script>
-  //try{eruda.init()}catch(e){};
+  try{eruda.init()}catch(e){};
   const vs = '1.17'
   const app = document.querySelector('app')
   app.onclick = function() {
@@ -469,10 +476,12 @@ div#sh {
       f.oncontextmenu=function(){
         accion('¿Eliminar esta foto?',()=>{
           this.remove()
+          eliminarDeCache(this.src)
           action()
         })
       }
-      document.documentElement.style.setProperty('--img', (nm.length/3).toFixed(0))
+      let tm = Math.ceil(nm.length/3)
+      document.documentElement.style.setProperty('--img', tm<3?3:tm )
     });
     
     record();
@@ -716,7 +725,7 @@ const fetch_ = async(url,callback)=>{
         })(document.querySelector('[data-view]'));
         
         ((o)=>{
-          if(user.first_name){
+          if(user.first_name&&o){
             o.innerHTML = ' '+user.first_name
             o.dataset.auth = ' '+user.username
           }
@@ -768,11 +777,11 @@ const fetch_ = async(url,callback)=>{
     load(true)
     let z = new Image()
     z.src = q
-    z.alt = ""
     z.onload = function() {
       load()
-      miga.src = this.src
-      miga.alt = this.alt
+      fN.src = this.src
+      gimg(this)
+      search.value=''
       alert('Se ha añadido la imagen de la url')
       record()
       action()
@@ -850,13 +859,12 @@ gs = (r)=>{
   let li = '';
   if (r.results) {
     r.results.forEach(o=>{
-      li += `<img onclick="accion('Guardar ésta imagen?<br>'+ gU(this) ,()=>{ load(true);i=new Image(); i.src= this.dataset.src; i.alt=this.alt; i.onload=function(){gimg(this); load();record();fts.scrollTop=0 };i.onerror=function(){load();alert('Error al cargar la imagen')} })" src="${o.tbMedUrl}" data-src="${o.url}" class="mini" alt="${(o.titleNoFormatting.replace(/[\W]+/gim, ' ')).slice(0, 60)}">`
+      li += `<img onclick="accion('Guardar ésta imagen?<br>'+ gU(this) ,()=>{ load(true);i=new Image(); i.src= this.dataset.src; i.onload=function(){gimg(this); load();record();fts.scrollTop=0 };i.onerror=function(){load();alert('Error al cargar la imagen')} })" src="${o.tbMedUrl}" data-src="${o.url}" class="mini" alt="${(o.titleNoFormatting.replace(/[\W]+/gim, ' ')).slice(0, 60)}">`
     }
     )
     results.innerHTML = ` ${li} <div>${r.cursor.pages.map((v,n)=>n < 8 ? `<label onclick="busca(null,${n * 20})" class="bi-${n + 1}-square${n == r.cursor.currentPageIndex ? '-fill' : ''}"></label>` : '').join('')}</div><p>Resultados de Google. Pueden estar sujetas a derechos de autor.</p>`
   } else {
     captcha = (t)=>{
-      alert(t)
       localStorage._grecaptcha = t
       busca();
       mcaptcha.remove()
@@ -870,7 +878,39 @@ gs = (r)=>{
     }
   }
 }
+
+if ('serviceWorker'in navigator) {
+  caches.keys().then(function(cacheNames) {
+    cacheNames.forEach(function(cacheName) {
+      alert(cacheName)
+      //caches.delete(cacheName)
+    });
+  });
+}
+
+    async function eliminarDeCache(url) {
+      const cache = await caches.open('cache-app-0');
+      await cache.delete(url);
+      console.log(`URL eliminada de la caché: ${url}`);
+    }
+
+    async function listarCache() {
+      const cache = await caches.open('cache-app-0');
+      const keys = await cache.keys();
+      console.log('lista en cache')
+      for (const request of keys) {
+        const response = await cache.match(request);
+        const responseData = await response.clone().text();
+        // Clonamos para poder leerlo
+        console.log(`${request.url}`);
+        //console.log( `Datos: ${responseData}` );
+      }
+    }
+   listarCache();
+
+
+
 const cx = "4416977100c5544ee";
-navigator.serviceWorker && navigator.serviceWorker.register("sw.js").then(e=>console.log("service worker registered")).catch(e=>console.log(`Here is the error: ${e}`));
+navigator.serviceWorker && navigator.serviceWorker.register("sw-app.js").then(e=>console.log("service worker registered")).catch(e=>console.log(`Here is the error: ${e}`));
 </script>
 </html>
