@@ -117,4 +117,3 @@ const footer = document.createElement('footer');
       )(document.querySelectorAll('article img'))
     }
     )();
-
