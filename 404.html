@@ -1,81 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1">
-  <link rel="stylesheet" href="style.css">
-  <style>
-    a.telegraph{
-      text-align: center;
-      position: fixed;
-      background: var(--background);
-      left: 0;
-      bottom:0;
-      font-size:.6em;
-      padding: .2em;
-      border-radius: 0 .3em 0 0;
-      box-shadow: 0 0 .2em #000
-    }
-  </style>
-</head>
-<body>
-  <article>
-    <h3>loading...</h3>
-  </article>
-</body>
-<script src="script.js"></script>
-<script>
-
-  draw=(r)=>{
-    if(r.ok){
-      o = r.result
-      if(o.content[0].tag=='br'){
-      article.innerHTML=`
-        <header>
-          <h1>${o.title}</h1>
-          <div>
-            <span data-view="${o.path}" class="bi-eye-fill">&nbsp;Views</span>
-            <span data-time="" class="bi-calendar2-date">&nbsp;Time ago</span>
-            <a data-auth="" href="https://t.me/${o.path.split('-')[0]}" class="bi-telegram">&nbsp;${o.path.split('-')[0]}_</a>
-          </div>
-        </header>
-        <section>
-          ${o.content.map(e=>e.tag=='p'?'<p>'+e.children[0]+'</p>':e.tag=='img'?'<img src="'+e.attrs.src+'" alt="">':e.tag=='h3'?'<h3>'+e.children[0]+'</h3>':'').join('')}
-        </section>
-        <a href="${o.url}" class="telegraph">${o.views} views on telegra.ph</a>
-      `
-      }else{
-      article.innerHTML=`
-        <h3>Error!</h3>
-        <p>No created by bot</p>
-      `
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=10">
+    <title>Fetch API Example</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      footer div.alojada {
+        color: var(--color-font);
+        font-weight: 300;
+        font-size:.7em;
+        padding: .9em .1em
       }
-      lib()
-    }else{
-      article.innerHTML=`
-        ${
-          r.e == 'Failed to fetch'?`
-        <h1>Error</h1>
-        <p>Sin conexión al sitio</p>
-          `:`
-        <h1>404 Error</h1>
-        <p>No se ha encontrado la página!</p>
-          `
+      .error{
+        text-align:center;
+        height:70vh;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+        align-items: center;
+      }
+      .error *{
+        text-align:center;
+        width:100%
+      }
+      .bi-pin-angle-fill{
+        padding:.2em;
+        color: #acacac
+      }
+    </style>
+  </head>
+  <body>
+    <article></article>
+    <script src="script.js" data-script=""></script>
+    <script>
+      async function fetchData(path) {
+        try {
+          const response = await fetch(`https://api.telegra.ph/getPage/${path}?return_content=true`);
+          //const response = await fetch('fake.json');
+          if (!response.ok) {
+            throw new Error(response.status==404?'<h1>Error 404</h1><p>La página no existe</p>':'Error '+response.status);
+          }
+          const d = await response.json();
+          if (!d.ok || !d.result.content[0].tag == 'br') {
+            throw new Error('<h1>Error 403</h1><p>Página no creada con el bot</p>');
+          }
+          o = d.result
+          console.log(JSON.stringify(d, null, 2))
+          article.innerHTML = `
+          <header>
+            <h1>${o.title}</h1>
+            <div>
+              <span data-view="${o.path}" class="bi-eye-fill">&nbsp;Views</span>
+              <a href="${o.url}" class="bi-pin-angle-fill">&nbsp;telegra.ph</a>
+              <a data-auth="" href="${o.author_url}" class="bi-telegram">&nbsp;${o.path}</a>
+            </div>
+          </header>
+          <section>
+          ${o.content.map(e=>e.tag == 'p' ? '<p>' + e.children[0] + '</p>' : e.tag == 'img' ? '<img src="' + e.attrs.src + '" alt="">' : e.tag == 'h3' ? '<h3>' + e.children[0] + '</h3>' : '').join('')}
+          </section>
+          `;
+          let f = document.createElement('div')
+          f.className = "alojada"
+          f.innerHTML =`Página alojada en <a href="${o.url}" class="telegraph">telegra.ph</a> with <b>${o.views}</b> views`
+          footer.append(f)
+        } catch (error) {
+          article.innerHTML = `
+          <div class="error">
+            ${error.message=='Failed to fetch'?'<h1>Error</h1><p>Sin conexión</p>':error.message}
+          </div>
+          `;
         }
-      `
-    }
-  };
-
-  (async function getPage(path) {
-    const url = `https://api.telegra.ph/getPage/${path}?return_content=true`;
-    try {
-      const response = await fetch(url);
-      const data = await response.json();
-      console.log(JSON.stringify(data,null,2));
-      draw(data)
-    } catch (e) {
-      draw({e:e.message});
-    }
-  })(window.location.pathname.replace('/',''))
-</script>
+        lib()
+      }
+      fetchData('dani-dsd-11-02-2' || window.location.pathname.replace('/', ''));
+    </script>
+  </body>
 </html>
