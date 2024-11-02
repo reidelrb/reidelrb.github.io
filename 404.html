@@ -51,7 +51,7 @@
           <header>
             <h1>${o.title}</h1>
             <div>
-              <span data-view="${o.path}" class="bi-eye-fill">&nbsp;Views</span>
+              <span data-view="${o.path.replace('-','')}" class="bi-eye-fill">&nbsp;Views</span>
               <a href="${o.url}" class="bi-pin-angle-fill">&nbsp;telegra.ph</a>
               <a data-auth="" href="${o.author_url}" class="bi-telegram">&nbsp;${o.path}</a>
             </div>
