@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <script>
-      //window.location.hash = "tgWebAppData=user%3D%257B%2522id%2522%253A6526862605%252C%2522first_name%2522%253A%2522Daniel%2522%252C%2522last_name%2522%253A%2522%2522%252C%2522username%2522%253A%2522dani_dsd%2522%252C%2522language_code%2522%253A%2522es%2522%252C%2522allows_write_to_pm%2522%253Atrue%257D%26chat_instance%3D8687617147785070437%26chat_type%3Dprivate%26auth_date%3D1730077246%26hash%3D910b138b836a4698d1ea5bcb2dc638bb5067a53ff278344a1c18926d7fdd17f6&tgWebAppVersion=7.4&tgWebAppPlatform=android&tgWebAppThemeParams=%7B%22bg_color%22%3A%22%23212d3b%22%2C%22section_bg_color%22%3A%22%231d2733%22%2C%22secondary_bg_color%22%3A%22%23151e27%22%2C%22text_color%22%3A%22%23ffffff%22%2C%22hint_color%22%3A%22%237d8b99%22%2C%22link_color%22%3A%22%235eabe1%22%2C%22button_color%22%3A%22%2350a8eb%22%2C%22button_text_color%22%3A%22%23ffffff%22%2C%22header_bg_color%22%3A%22%23242d39%22%2C%22accent_text_color%22%3A%22%2364b5ef%22%2C%22section_header_text_color%22%3A%22%2379c4fc%22%2C%22subtitle_text_color%22%3A%22%237b8790%22%2C%22destructive_text_color%22%3A%22%23ee686f%22%7D"
+      window.location.hash = "tgWebAppData=user%3D%257B%2522id%2522%253A6526862605%252C%2522first_name%2522%253A%2522Daniel%2522%252C%2522last_name%2522%253A%2522%2522%252C%2522username%2522%253A%2522dani_dsd%2522%252C%2522language_code%2522%253A%2522es%2522%252C%2522allows_write_to_pm%2522%253Atrue%257D%26chat_instance%3D8687617147785070437%26chat_type%3Dprivate%26auth_date%3D1730077246%26hash%3D910b138b836a4698d1ea5bcb2dc638bb5067a53ff278344a1c18926d7fdd17f6&tgWebAppVersion=7.4&tgWebAppPlatform=android&tgWebAppThemeParams=%7B%22bg_color%22%3A%22%23212d3b%22%2C%22section_bg_color%22%3A%22%231d2733%22%2C%22secondary_bg_color%22%3A%22%23151e27%22%2C%22text_color%22%3A%22%23ffffff%22%2C%22hint_color%22%3A%22%237d8b99%22%2C%22link_color%22%3A%22%235eabe1%22%2C%22button_color%22%3A%22%2350a8eb%22%2C%22button_text_color%22%3A%22%23ffffff%22%2C%22header_bg_color%22%3A%22%23242d39%22%2C%22accent_text_color%22%3A%22%2364b5ef%22%2C%22section_header_text_color%22%3A%22%2379c4fc%22%2C%22subtitle_text_color%22%3A%22%237b8790%22%2C%22destructive_text_color%22%3A%22%23ee686f%22%7D"
     </script>
     <title>Reidelrb Article</title>
     <meta charset="UTF-8">
@@ -23,7 +23,7 @@
         border-radius: 0 0 .2em .2em;
         text-align: center;
         box-shadow: 0 0 .2em #000;
-        font-size: 1.2em;
+        font-size: 1em;
         border: outset 1px
       }
 
@@ -44,24 +44,18 @@
         min-width: 3em;
         padding: .2em .2em
       }
-      
-      .menu-e {
-        padding:0;
-        border: outset 1px;
-        outline: none;
-        border-radius:.1em;
-        box-shadow: 0 0 .3em #000
-      }
-      
-      .menu-e a{
-        color: #000;
+
+      app b i {
+        color: #fff;
+        background: red;
+        font-size: .5em;
+        border-radius: .3em;
         display: inline-block;
-        padding: .2em;
-        font-size:1.3em
-      }
-      
-      article {
-        padding-top:2.5em
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: .2em;
+        padding: .1em .3em
       }
 
       .accion {
@@ -356,7 +350,7 @@
       </section>
     </div>
   </body>
-  <script psrc="https://cdn.jsdelivr.net/npm/eruda"></script>
+  <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
   <script src="script.js"></script>
   <script>
     try {
@@ -419,6 +413,7 @@
         document.querySelector('article section').append(e)
       }
       action()
+      app.innerHTML = ''
     }
     gtk = e=>{
       var t = new Date().getTime();
@@ -508,6 +503,7 @@
       nm.forEach(f=>{
         f.onclick = function() {
           fN.src = this.src
+          fN.click()
         }
         f.oncontextmenu = function() {
           accion('¿Eliminar esta foto?', ()=>{
@@ -524,22 +520,71 @@
 
       record();
 
-            app.innerHTML =`<b class="bi-trash" onclick="accion('¿Borrar toda la página actual?')">${$project}</b>`
+      ['article h1', 'article h3', 'article p', 'article img', 'body'].forEach(t=>{
+        document.querySelectorAll(t).forEach((e,n)=>{
+          e.onclick = function() {
+            event.stopPropagation()
+            let e = this
+            let t = this.tagName
+            app.innerHTML = t != 'BODY' ? `<b onclick="article.click()">${t} <i>${n + 1}</i></b>` : '<b>' + $project + '</b>'
 
-            opt = (c,f,p,t)=>{
-              let a = document.createElement(t||'a')
+            opt = (c,f)=>{
+              let a = document.createElement('a')
               a.className = 'bi-' + c
               a.onclick = f
-              p.append(a)
-            };
+              app.append(a)
+            }
 
-            opt('info-circle', ()=>{
-              alert(`<h3>Hola Mundo</h3>`)
-            },app),
+            (t != 'BODY') && (opt('pencil-square', ()=>{
+              if (this.tagName != 'IMG') {
+                this.contentEditable = 'plaintext-only';
+                this.focus()
+                app.innerHTML = ''
+                this.onblur = function() {
+                  this.innerHTML = this.innerHTML.replace(/(\n)/gim, '<br>')
+                  this.contentEditable = 'inherit'
+                  action()
+                }
+              } else {
+                fN = this
+                load(true);
+                setTimeout('gl.style.display="flex",load()', 200)
+              }
+            }
+            ));
 
-            opt((inbot ? 'robot' : 'cloud-download'), ()=>{
-              paths = document.querySelector('article header').dataset.path
-              accion(inbot ? paths ?`Actualizar éste artículo en telegra.ph <b>${window.location.origin}/${paths}</b>`:'Publicar artículo en telegra.ph' : 'Descargar cómo HTML', async()=>{
+            (t != 'BODY' && t != 'H1') && (opt('trash', ()=>{
+              accion('Eliminar el elemento ' + {
+                P: 'Párrafo',
+                H2: 'Subtítulo',
+                IMG: 'Image'
+              }[this.tagName], ()=>{
+                this.remove()
+                action()
+              }
+              )
+            }
+            ));
+
+            (t == 'H3' || t == 'P' || t == 'IMG') && (opt(clip ? 'paperclip' : 'scissors', ()=>{
+              clip ? (this.after(clip),
+              clip = false,
+              app.innerHTML = "",
+              action()) : (clip = this.cloneNode(true),
+              app.innerHTML = '',
+              this.remove())
+            }
+            ));
+
+            (t == 'BODY') && (opt('info-circle', ()=>{
+              alert(`
+                <h3>Hola Mundo</h3>
+              `)
+            }
+            ),
+
+            opt((inbot ? 'telegram' : 'cloud-download'), ()=>{
+              accion(inbot ? 'Publicar en telegra.ph' : 'Descargar cómo HTML', async()=>{
                 if (inbot) {
                   const te = document.querySelector('h1').innerHTML;
                   const hd = `&author_name=${user.first_name}%20${user.last_name}`;
@@ -571,7 +616,7 @@
 
                   (async function telegra() {
                     load(true);
-                    if ( !document.querySelector('article header').dataset.path ) {
+                    if (!document.querySelector('article header').dataset.path) {
                       // crear cuenta
                       fetch_('https://api.telegra.ph/createAccount?short_name=' + user.username + hd, (x)=>{
                         document.querySelector('article header').dataset.token = x.result.access_token
@@ -592,8 +637,6 @@
                           const params = new URLSearchParams({
                             access_token: document.querySelector('article header').dataset.token,
                             title: te,
-                            author_url: 'https://t.me/'+user.username,
-                            return_content: true,
                             path: document.querySelector('article header').dataset.path,
                             content: JSON.stringify(page),
                           });
@@ -603,7 +646,6 @@
                               body: params
                             });
                             const data = await response.json();
-                            console.log(JSON.stringify(data,null,2))
                             miurl = window.location.origin + '/' + document.querySelector('article header').dataset.path
                             accion(`La URL de acceso a tu página: <input disabled value="${miurl}" type="url"> `, ()=>{
                               copyToClip(miurl)
@@ -618,7 +660,8 @@
                         )()
                       }
                     }
-                  })()
+                  }
+                  )()
                 } else {
                   $basic_css = ''
                   //document.querySelector("#style").innerHTML.replace(/(  )|(\n)/gim, ""),
@@ -639,66 +682,21 @@
                 }
               }
               )
-            },app);
+            }
+            ));
 
-      ['article h1', 'article h3', 'article p', 'article img'].forEach(t=>{
-        document.querySelectorAll(t).forEach((e,n)=>{
-          e.onclick = function() {
-            event.stopPropagation()
-            let e = miga = this
-            let t = this.tagName
-            let l = document.createElement("dialog");
-
-            opt('pencil-square', ()=>{
-              if (this.tagName != 'IMG') {
-                this.contentEditable = 'plaintext-only';
-                this.onblur = function() {
-                  this.innerHTML = this.innerHTML.replace(/(\n)/gim, '<br>')
-                  this.contentEditable = 'inherit'
-                  action()
-                  event.preventDefault()
-                }
-              } else {
-                fN = this
-                load(true);
-                setTimeout('gl.style.display="flex",load()', 200)
-              }
-            },l);
-
-            (t != 'H1') && (opt('trash', ()=>{
-              accion('Eliminar el elemento ' + {
-                P: 'Párrafo',
-                H3: 'Subtítulo',
-                IMG: 'Image'
-              }[this.tagName], ()=>{
-                this.remove()
-                action()
-              })
-            },l),
-            
-            opt(clip ? 'copy' : 'scissors', ()=>{
-              clip ? (this.after(clip),
-              clip = false,
-              app.innerHTML = "",
-              action()) : (clip = this.cloneNode(true),
-              app.innerHTML = '',
-              this.remove())
-            },l)
-            );
-
-
-            
             opt('plus-square', ()=>{
               miga = this
-              event.stopPropagation()
-              l.innerHTML = `
+              app.innerHTML = `
                 <a onclick="ad('img')" class="bi-image"></a>
                 <a onclick="ad('h3')" class="bi-fonts"></a>
                 <a onclick="ad('p')" class="bi-justify-left"></a>
                 `
-            },l);
-            
-            (this.contentEditable != 'plaintext-only') && (menu(false,l));
+            }
+            );
+            l = document.createElement("dialog");
+            menu(false,l);
+            (this.contentEditable == 'plaintext-only') && (app.innerHTML = '');
           }
         }
         )
@@ -790,7 +788,9 @@
           }
         }
         )(document.querySelector('[data-auth]'));
+
         action()
+        article.click()
       }
       )
     }
@@ -1017,7 +1017,6 @@ getPosition = (e)=>{
   l.className = "menu-e"
   l.onclick = function() {
     this.remove()
-    miga.focus()
   }
   document.body.append(l)
   l.showModal()
@@ -1034,9 +1033,7 @@ getPosition = (e)=>{
   m - a < s / 2 ? o.style.marginTop = m - s + "px" : a - s / 2 < 0 ? o.style.marginTop = "5px" : o.style.marginTop = a - s / 2 + "px"
 }
 
-window.onscroll = function(){
-  document.querySelectorAll('.menu-e').forEach(r=>{r.remove()})
-}
+
 
     const cx = "4416977100c5544ee";
     navigator.serviceWorker && navigator.serviceWorker.register("sw-app.js").then(e=>console.log("service worker registered")).catch(e=>console.log(`Here is the error: ${e}`));
