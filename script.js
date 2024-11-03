@@ -32,8 +32,13 @@ function showVisible() {
     if (!realSrc)
       continue;
     if (isVisible(img)) {
-      img.src = realSrc;
-      img.dataset.src = ''
+      /*img.src = realSrc*/;
+      n = new Image();
+      n.src= realSrc;
+      n.onload = n.onerror = function(){
+        document.querySelectorAll('img[data-src="'+this.src+'"]').forEach (f=>{f.src = this.src;f.dataset.src = ''})
+      };
+      
     }
   }
 }
