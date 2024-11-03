@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <script>
-      window.location.hash = "tgWebAppData=user%3D%257B%2522id%2522%253A6526862605%252C%2522first_name%2522%253A%2522Daniel%2522%252C%2522last_name%2522%253A%2522%2522%252C%2522username%2522%253A%2522dani_dsd%2522%252C%2522language_code%2522%253A%2522es%2522%252C%2522allows_write_to_pm%2522%253Atrue%257D%26chat_instance%3D8687617147785070437%26chat_type%3Dprivate%26auth_date%3D1730077246%26hash%3D910b138b836a4698d1ea5bcb2dc638bb5067a53ff278344a1c18926d7fdd17f6&tgWebAppVersion=7.4&tgWebAppPlatform=android&tgWebAppThemeParams=%7B%22bg_color%22%3A%22%23212d3b%22%2C%22section_bg_color%22%3A%22%231d2733%22%2C%22secondary_bg_color%22%3A%22%23151e27%22%2C%22text_color%22%3A%22%23ffffff%22%2C%22hint_color%22%3A%22%237d8b99%22%2C%22link_color%22%3A%22%235eabe1%22%2C%22button_color%22%3A%22%2350a8eb%22%2C%22button_text_color%22%3A%22%23ffffff%22%2C%22header_bg_color%22%3A%22%23242d39%22%2C%22accent_text_color%22%3A%22%2364b5ef%22%2C%22section_header_text_color%22%3A%22%2379c4fc%22%2C%22subtitle_text_color%22%3A%22%237b8790%22%2C%22destructive_text_color%22%3A%22%23ee686f%22%7D"
+      //window.location.hash = "tgWebAppData=user%3D%257B%2522id%2522%253A6526862605%252C%2522first_name%2522%253A%2522Damian%2522%252C%2522last_name%2522%253A%2522%2522%252C%2522username%2522%253A%2522dani_dsd%2522%252C%2522language_code%2522%253A%2522es%2522%252C%2522allows_write_to_pm%2522%253Atrue%257D%26chat_instance%3D8687617147785070437%26chat_type%3Dprivate%26auth_date%3D1730077246%26hash%3D910b138b836a4698d1ea5bcb2dc638bb5067a53ff278344a1c18926d7fdd17f6&tgWebAppVersion=7.4&tgWebAppPlatform=android&tgWebAppThemeParams=%7B%22bg_color%22%3A%22%23212d3b%22%2C%22section_bg_color%22%3A%22%231d2733%22%2C%22secondary_bg_color%22%3A%22%23151e27%22%2C%22text_color%22%3A%22%23ffffff%22%2C%22hint_color%22%3A%22%237d8b99%22%2C%22link_color%22%3A%22%235eabe1%22%2C%22button_color%22%3A%22%2350a8eb%22%2C%22button_text_color%22%3A%22%23ffffff%22%2C%22header_bg_color%22%3A%22%23242d39%22%2C%22accent_text_color%22%3A%22%2364b5ef%22%2C%22section_header_text_color%22%3A%22%2379c4fc%22%2C%22subtitle_text_color%22%3A%22%237b8790%22%2C%22destructive_text_color%22%3A%22%23ee686f%22%7D"
     </script>
     <title>Reidelrb Article</title>
     <meta charset="UTF-8">
@@ -44,24 +44,24 @@
         min-width: 3em;
         padding: .2em .2em
       }
-      
+
       .menu-e {
-        padding:0;
+        padding: 0;
         border: outset 1px;
         outline: none;
-        border-radius:.1em;
+        border-radius: .1em;
         box-shadow: 0 0 .3em #000
       }
-      
-      .menu-e a{
+
+      .menu-e a {
         color: #000;
         display: inline-block;
         padding: .2em;
-        font-size:1.3em
+        font-size: 1.3em
       }
-      
+
       article {
-        padding-top:2.5em
+        padding-top: 2.5em
       }
 
       .accion {
@@ -311,7 +311,9 @@
     <article></article>
     <app></app>
     <div class="loading">
-      <h1>Load...</h1>
+      <h1>
+        <div class="spinner"></div>
+      </h1>
     </div>
     <div id="gl">
       <div id="gale">
@@ -356,13 +358,14 @@
       </section>
     </div>
   </body>
-  <script psrc="https://cdn.jsdelivr.net/npm/eruda"></script>
+  <script src="https://cdn.jsdelivr.net/npm/eruda"></script>
   <script src="script.js"></script>
   <script>
     try {
       eruda.init()
     } catch (e) {}
-    ;const vs = '1.17'
+    const vs = '1.17'
+    let clip = false
     select = document.querySelector('app')
     select.ondragstart = ()=>false;
     select.onpointerdown = function() {
@@ -474,35 +477,6 @@
       }
     }
 
-    let inbot = false
-    let user = {
-      username: gtk('xxxxxxxxxxxx'),
-      first_name: ''
-    };
-
-    if (window.Telegram && window.Telegram.WebApp.initDataUnsafe.user) {
-      user = window.Telegram.WebApp.initDataUnsafe.user
-      inbot = true
-      window.Telegram.WebApp.onEvent('viewportChanged', function() {
-        window.Telegram.WebApp.expand()
-      });
-      window.Telegram.WebApp.expand()
-    }
-    let clip = false
-    const template = `
-        <header>
-          <h1>Minimalist page web</h1>
-          <div>
-            <span data-view="${user.username}" class="bi-eye-fill">&nbsp;Views</span>
-            <span data-time="" class="bi-calendar2-date">&nbsp;Time ago</span>
-            ${user.first_name ? `<a data-auth="${user.username}" class="bi-person-circle">&nbsp;${user.first_name} ${user.last_name}</a>` : ''}
-          </div>
-        </header>
-        <section>
-          <p>Hola ${user.first_name}, puedes editar ésta página y compartirla con tus amigos... ${user.first_name == '' ? 'Usa el bot de telegram para publicarla en telegra.ph' : ''}</p>
-        </section>
-      `;
-
     (action = async(e)=>{
       let nm = document.querySelectorAll('#fts img')
       nm.forEach(f=>{
@@ -524,122 +498,125 @@
 
       record();
 
-            app.innerHTML =`<b class="bi-trash" onclick="accion('¿Borrar toda la página actual?')">${$project}</b>`
+      app.innerHTML = `<b class="bi-trash" onclick="accion('¿Borrar toda la página actual?',()=>{accion('Seguro desea eliminar el contenido de ésta página.${document.querySelector('article header').dataset.path ? ' La página no será eliminada de telegra.ph y ya no podrá editarla!' : ''}',()=>{accion('Confirma para eliminar de forma permanente!!!',()=>{record(template);home()})})})">${$project}</b>`
 
-            opt = (c,f,p,t)=>{
-              let a = document.createElement(t||'a')
-              a.className = 'bi-' + c
-              a.onclick = f
-              p.append(a)
-            };
+      opt = (c,f,p,t)=>{
+        let a = document.createElement(t || 'a')
+        a.className = 'bi-' + c
+        a.onclick = f
+        p.append(a)
+      }
+      ;
 
-            opt('info-circle', ()=>{
-              alert(`<h3>Hola Mundo</h3>`)
-            },app),
+      opt('info-circle', ()=>{
+        alert(`<h3>Hola Mundo</h3>`)
+      }
+      , app),
 
-            opt((inbot ? 'robot' : 'cloud-download'), ()=>{
-              paths = document.querySelector('article header').dataset.path
-              accion(inbot ? paths ?`Actualizar éste artículo en telegra.ph <b>${window.location.origin}/${paths}</b>`:'Publicar artículo en telegra.ph' : 'Descargar cómo HTML', async()=>{
-                if (inbot) {
-                  const te = document.querySelector('h1').innerHTML;
-                  const hd = `&author_name=${user.first_name}%20${user.last_name}`;
+      opt((inbot ? 'robot' : 'cloud-download'), ()=>{
+        paths = document.querySelector('article header').dataset.path
+        accion(inbot ? paths ? `Actualizar éste artículo en telegra.ph <b>${window.location.origin}/${paths}</b>` : 'Publicar artículo en telegra.ph' : 'Descargar cómo HTML', async()=>{
+          if (inbot) {
+            const te = document.querySelector('h1').innerHTML;
+            const hd = `&author_name=${user.first_name}%20${user.last_name}`;
 
-                  let page = [{
-                    tag: 'br',
-                    children: ["hola"]
-                  }];
-                  (childs = (e)=>{
-                    if (e) {
-                      let t = (e.tagName).toLowerCase()
-                      o = {
-                        tag: t
-                      };
-                      (t == 'p' || t == 'h3') && (o.children = [e.innerHTML.replace(/(<br>)/gim, '\n')])
-                      t == 'img' && (o.attrs = {
-                        src: e.src
-                      })
+            let page = [{
+              tag: 'br',
+              children: ["hola"]
+            }];
+            (childs = (e)=>{
+              if (e) {
+                let t = (e.tagName).toLowerCase()
+                o = {
+                  tag: t
+                };
+                (t == 'p' || t == 'h3') && (o.children = [e.innerHTML.replace(/(<br>)/gim, '\n')])
+                t == 'img' && (o.attrs = {
+                  src: e.src
+                })
 
-                      page.push(o)
-                      n = e.nextElementSibling
-                      n && (childs(n))
-                    } else {
-                      alert('No hay contenido para publicar')
-                      return true
-                    }
+                page.push(o)
+                n = e.nextElementSibling
+                n && (childs(n))
+              } else {
+                alert('No hay contenido para publicar')
+                return true
+              }
+            }
+            )(document.querySelector('article section').firstElementChild);
+
+            (async function telegra() {
+              load(true);
+              if (!document.querySelector('article header').dataset.path) {
+                // crear cuenta
+                fetch_('https://api.telegra.ph/createAccount?short_name=' + user.username + hd, (x)=>{
+                  document.querySelector('article header').dataset.token = x.result.access_token
+                  // crear página
+                  console.log(document.querySelector('article header').dataset.token)
+                  fetch_('https://api.telegra.ph/createPage?access_token=' + document.querySelector('article header').dataset.token + '&title=' + (user.username.toLowerCase()).replaceAll('_', 'S') + hd + '&content=[{"tag":"p","children":["Hello,+world!"]}]&return_content=true', (x)=>{
+                    document.querySelector('article header').dataset.path = x.result.path
+                    record()
+                    telegra()
                   }
-                  )(document.querySelector('article section').firstElementChild);
-
-                  (async function telegra() {
-                    load(true);
-                    if ( !document.querySelector('article header').dataset.path ) {
-                      // crear cuenta
-                      fetch_('https://api.telegra.ph/createAccount?short_name=' + user.username + hd, (x)=>{
-                        document.querySelector('article header').dataset.token = x.result.access_token
-                        // crear página
-                        console.log(document.querySelector('article header').dataset.token)
-                        fetch_('https://api.telegra.ph/createPage?access_token=' + document.querySelector('article header').dataset.token + '&title=' + (user.username.toLowerCase()).replaceAll('_','S') + hd + '&content=[{"tag":"p","children":["Hello,+world!"]}]&return_content=true', (x)=>{
-                          document.querySelector('article header').dataset.path = x.result.path
-                          record()
-                          telegra()
-                        }
-                        )
+                  )
+                }
+                )
+              } else {
+                if (page.length > 0) {
+                  (async()=>{
+                    const url = 'https://api.telegra.ph/editPage';
+                    const params = new URLSearchParams({
+                      access_token: document.querySelector('article header').dataset.token,
+                      title: te,
+                      author_url: 'https://t.me/' + user.username,
+                      return_content: true,
+                      path: document.querySelector('article header').dataset.path,
+                      content: JSON.stringify(page),
+                    });
+                    try {
+                      const response = await fetch(url, {
+                        method: 'POST',
+                        body: params
+                      });
+                      const data = await response.json();
+                      console.log(JSON.stringify(data, null, 2))
+                      miurl = window.location.origin + '/' + document.querySelector('article header').dataset.path
+                      accion(`La URL de acceso a tu página: <input disabled value="${miurl}" type="url"> `, ()=>{
+                        copyToClip(miurl)
                       }
                       )
-                    } else {
-                      if (page.length > 0) {
-                        (async()=>{
-                          const url = 'https://api.telegra.ph/editPage';
-                          const params = new URLSearchParams({
-                            access_token: document.querySelector('article header').dataset.token,
-                            title: te,
-                            author_url: 'https://t.me/'+user.username,
-                            return_content: true,
-                            path: document.querySelector('article header').dataset.path,
-                            content: JSON.stringify(page),
-                          });
-                          try {
-                            const response = await fetch(url, {
-                              method: 'POST',
-                              body: params
-                            });
-                            const data = await response.json();
-                            console.log(JSON.stringify(data,null,2))
-                            miurl = window.location.origin + '/' + document.querySelector('article header').dataset.path
-                            accion(`La URL de acceso a tu página: <input disabled value="${miurl}" type="url"> `, ()=>{
-                              copyToClip(miurl)
-                            }
-                            )
-                            load();
-                          } catch (error) {
-                            load();
-                            alert('Sin acceso!');
-                          }
-                        }
-                        )()
-                      }
+                      load();
+                    } catch (error) {
+                      load();
+                      alert('Sin acceso!');
                     }
-                  })()
-                } else {
-                  $basic_css = ''
-                  //document.querySelector("#style").innerHTML.replace(/(  )|(\n)/gim, ""),
-                  $host = window.location.origin
-                  pg = article.innerHTML,
-                  html = `<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1"/><link rel="icon" href="${$host}/icon.png"/><title>${(x = article.querySelector("h1")) ? x.innerHTML : "default Page"}</title><style>${$basic_css}</style></head><body><article>${pg}</article></body><script src="script.js"><\/script></html>`;
-                  let e = html.split(/(?=<)/).map(e=>e.trim())
-                    , t = ""
-                    , n = 0;
-                  e.forEach(e=>{
-                    e.startsWith("</") && --n < 0 && (n = 0),
-                    ["</title>", "<br>", "</i>", "</style>", "<\/script>", "</a>", "</span>", "</label>", "</p>", "</h1>", "</h2>"].indexOf(e) >= 0 ? t += e : t += "\n" + "  ".repeat(n) + e,
-                    !e.startsWith("<") || e.endsWith("/>") || e.startsWith("</") || e.startsWith("<img") || e.startsWith("<!DOCTYPE") || e.startsWith("<br") || e.startsWith("<hr") || n++
                   }
-                  );
-                  t = t.replace('<script src="script.js"><\/script>', '<script>' + (await getFile('script.js')).replace(/(\n)|(\s\s)/gim, '') + '<\/script>').replace('<style><\/style>', '<style>' + (await getFile('style.css')).replace(/(  )|(\n)/gim, "") + '<\/style>')
-                  dfile(t, (x = article.querySelector("h1")) ? x.innerHTML : "free html", 'html')
+                  )()
                 }
               }
-              )
-            },app);
+            }
+            )()
+          } else {
+            $basic_css = ''
+            $host = window.location.origin
+            pg = article.innerHTML.replaceAll(' src="', ' src="' + imgLoad + '" data-src="'),
+            html = `<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1"/><link rel="icon" href="${$host}/icon.png"/><title>${(x = article.querySelector("h1")) ? x.innerHTML : "default Page"}</title><style>${$basic_css}</style></head><body><article>${pg}</article></body><script src="script.js"><\/script></html>`;
+            let e = html.split(/(?=<)/).map(e=>e.trim())
+              , t = ""
+              , n = 0;
+            e.forEach(e=>{
+              e.startsWith("</") && --n < 0 && (n = 0),
+              ["</title>", "<br>", "</i>", "</style>", "<\/script>", "</a>", "</span>", "</label>", "</p>", "</h1>", "</h2>"].indexOf(e) >= 0 ? t += e : t += "\n" + "  ".repeat(n) + e,
+              !e.startsWith("<") || e.endsWith("/>") || e.startsWith("</") || e.startsWith("<img") || e.startsWith("<!DOCTYPE") || e.startsWith("<br") || e.startsWith("<hr") || n++
+            }
+            );
+            t = t.replace('<script src="script.js"><\/script>', '<script>' + (await getFile('script.js')).replace(/(\n)|(\s\s)/gim, '') + '<\/script>').replace('<style><\/style>', '<style>' + (await getFile('style.css')).replace(/(  )|(\n)/gim, "") + '<\/style>')
+            dfile(t, (x = article.querySelector("h1")) ? x.innerHTML : "free html", 'html')
+          }
+        }
+        )
+      }
+      , app);
 
       ['article h1', 'article h3', 'article p', 'article img'].forEach(t=>{
         document.querySelectorAll(t).forEach((e,n)=>{
@@ -663,7 +640,8 @@
                 load(true);
                 setTimeout('gl.style.display="flex",load()', 200)
               }
-            },l);
+            }
+            , l);
 
             (t != 'H1') && (opt('trash', ()=>{
               accion('Eliminar el elemento ' + {
@@ -673,9 +651,11 @@
               }[this.tagName], ()=>{
                 this.remove()
                 action()
-              })
-            },l),
-            
+              }
+              )
+            }
+            , l),
+
             opt(clip ? 'copy' : 'scissors', ()=>{
               clip ? (this.after(clip),
               clip = false,
@@ -683,11 +663,9 @@
               action()) : (clip = this.cloneNode(true),
               app.innerHTML = '',
               this.remove())
-            },l)
-            );
+            }
+            , l));
 
-
-            
             opt('plus-square', ()=>{
               miga = this
               event.stopPropagation()
@@ -696,9 +674,10 @@
                 <a onclick="ad('h3')" class="bi-fonts"></a>
                 <a onclick="ad('p')" class="bi-justify-left"></a>
                 `
-            },l);
-            
-            (this.contentEditable != 'plaintext-only') && (menu(false,l));
+            }
+            , l);
+
+            (this.contentEditable != 'plaintext-only') && (menu(false, l));
           }
         }
         )
@@ -707,8 +686,8 @@
     }
     )
 
-    record = ()=>{
-      putDB(article.innerHTML.replace(/(checked=\"\")|(flex;)|(none;)|(class="select")|(contenteditable="plaintext-only")|(class="")/gim, ''))
+    record = (t)=>{
+      putDB((t || article.innerHTML).replace(/(checked=\"\")|(flex;)|(none;)|(class="select")|(contenteditable="plaintext-only")|(class="")/gim, ''))
       putDB(document.querySelector('#fts').innerHTML, 'fts')
     }
 
@@ -758,6 +737,34 @@
     const $app_name = '@article'
     let $project = Number(localStorage.page || 1)
     function home() {
+      inbot = false
+      user = {
+        username: gtk('xxxxxxxxxxxx'),
+        first_name: ''
+      };
+
+      if (window.Telegram && window.Telegram.WebApp.initDataUnsafe.user) {
+        user = window.Telegram.WebApp.initDataUnsafe.user
+        inbot = true
+        window.Telegram.WebApp.onEvent('viewportChanged', function() {
+          window.Telegram.WebApp.expand()
+        });
+        window.Telegram.WebApp.expand()
+      }
+      template = `
+        <header>
+          <h1>Minimalist page web</h1>
+          <div>
+            <span data-view="${user.username}" class="bi-eye-fill">&nbsp;Views</span>
+            <span data-time="" class="bi-calendar2-date">&nbsp;Time ago</span>
+            ${user.first_name ? `<a data-auth="${user.username}" class="bi-person-circle">&nbsp;${user.first_name} ${user.last_name}</a>` : ''}
+          </div>
+        </header>
+        <section>
+          <p>Hola ${user.first_name}, puedes editar ésta página y compartirla con tus amigos... ${user.first_name == '' ? 'Usa el bot de telegram para publicarla en telegra.ph' : ''}</p>
+        </section>
+      `;
+
       localStorage.page = $project
       load(true)
       searchDB($project, (p)=>{
@@ -766,6 +773,7 @@
           var d = p
         } else {
           var d = template
+          alert('Nuevo artículo para editar')
         }
         article.innerHTML = d;
         ((o)=>{
@@ -994,49 +1002,51 @@
     }
     );
 
+    function menu(e, l) {
+      getPosition = (e)=>{
+        var posx = 0;
+        var posy = 0;
+        if (!e) {
+          var e = window.event
+        }
+        if (e.pageX || e.pageY) {
+          posx = e.pageX;
+          posy = e.pageY + -window.pageYOffset;
+        } else if (e.clientX || e.clientY) {
+          posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+          posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+        }
+        return {
+          x: posx,
+          y: posy
+        };
+      }
+      l.className = "menu-e"
+      l.onclick = function() {
+        this.remove()
+        miga.focus()
+      }
+      document.body.append(l)
+      l.showModal()
 
+      var o = l;
+      let i = getPosition(e)
+        , r = i.x
+        , a = i.y
+        , c = o.offsetWidth + 4
+        , s = o.offsetHeight + 4
+        , u = window.innerWidth
+        , m = window.innerHeight;
+      u - r < c / 2 ? o.style.marginLeft = u - c + "px" : r - c / 2 < 0 ? o.style.marginLeft = "5px" : o.style.marginLeft = r - c / 2 + "px",
+      m - a < s / 2 ? o.style.marginTop = m - s + "px" : a - s / 2 < 0 ? o.style.marginTop = "5px" : o.style.marginTop = a - s / 2 + "px"
+    }
 
-
-function menu(e,l) {
-getPosition = (e)=>{
-  var posx = 0;
-  var posy = 0;
-  if (!e){var e = window.event}
-  if (e.pageX || e.pageY) {
-    posx = e.pageX;
-    posy = e.pageY + -window.pageYOffset;
-  } else if (e.clientX || e.clientY) {
-    posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-    posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-  }
-  return {
-    x: posx,
-    y: posy
-  };
-}
-  l.className = "menu-e"
-  l.onclick = function() {
-    this.remove()
-    miga.focus()
-  }
-  document.body.append(l)
-  l.showModal()
-  
-  var o = l;
-  let i = getPosition(e)
-    , r = i.x
-    , a = i.y
-    , c = o.offsetWidth + 4
-    , s = o.offsetHeight + 4
-    , u = window.innerWidth
-    , m = window.innerHeight;
-  u - r < c / 2 ? o.style.marginLeft = u - c + "px" : r - c / 2 < 0 ? o.style.marginLeft = "5px" : o.style.marginLeft = r - c / 2 + "px",
-  m - a < s / 2 ? o.style.marginTop = m - s + "px" : a - s / 2 < 0 ? o.style.marginTop = "5px" : o.style.marginTop = a - s / 2 + "px"
-}
-
-window.onscroll = function(){
-  document.querySelectorAll('.menu-e').forEach(r=>{r.remove()})
-}
+    window.onscroll = function() {
+      document.querySelectorAll('.menu-e').forEach(r=>{
+        r.remove()
+      }
+      )
+    }
 
     const cx = "4416977100c5544ee";
     navigator.serviceWorker && navigator.serviceWorker.register("sw-app.js").then(e=>console.log("service worker registered")).catch(e=>console.log(`Here is the error: ${e}`));
