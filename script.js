@@ -18,8 +18,26 @@ footer.innerHTML = `
   </div>
   `;
 article.after(footer);
-
-(lib = ()=>{
+let imgLoad = "data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=";
+function isVisible(elem) {
+  let coords = elem.getBoundingClientRect();
+  let windowHeight = document.documentElement.clientHeight;
+  let topVisible = coords.top > 0 && coords.top < windowHeight;
+  let bottomVisible = coords.bottom < windowHeight && coords.bottom > 0;
+  return topVisible || bottomVisible;
+}
+function showVisible() {
+  for (let img of document.querySelectorAll('img[data-src]')) {
+    let realSrc = img.dataset.src;
+    if (!realSrc)
+      continue;
+    if (isVisible(img)) {
+      img.src = realSrc;
+      img.dataset.src = ''
+    }
+  }
+}
+;(lib = ()=>{
   document.querySelectorAll('.share [data-share]').forEach(a=>{
     a.onclick = function() {
       if (this.dataset.share) {
@@ -62,8 +80,8 @@ article.after(footer);
   )(document.querySelector("[data-time]"));
   ((f)=>{
     f.forEach(e=>{
-      if (!e.classList.contains('g')) {
-        e.onclick = function() {
+      e.onclick = function() {
+        if (e.src != imgLoad) {
           $img_open = this;
           v = document.createElement('div');
           v.className = 'fview';
@@ -78,12 +96,12 @@ article.after(footer);
             v.setPointerCapture(event.pointerId);
             v.onpointerup = function(event) {
               if ($pi > event.clientX + 150) {
-                let nx = $img_open.nextElementSibling;
+                let nx = $img_open.nextElementSibling.nextElementSibling;
                 nx && nx.tagName == 'IMG' && (this.remove(),
                 nx.click())
               }
               if ($pi + 150 < event.clientX) {
-                let pv = $img_open.previousElementSibling;
+                let pv = $img_open.previousElementSibling.previousElementSibling;
                 pv && pv.tagName == 'IMG' && (this.remove(),
                 pv.click())
               }
@@ -93,6 +111,7 @@ article.after(footer);
           document.body.prepend(v)
         }
       }
+      ;
       e.onerror = function() {
         let i = document.createElement("canvas")
           , $ = i.getContext("2d");
@@ -109,11 +128,13 @@ article.after(footer);
       }
       ;
       !e.classList.contains('g') && (k = document.createElement('figure'),
-      k.innerHTML = `by <b>${(new URL(e.src || 'http://example.com')).origin}</b>`,
+      k.innerHTML = `by <b>${(new URL(e.dataset.src || (e.src || 'http://example.com'))).origin}</b>`,
       e.before(k))
     }
     )
   }
-  )(document.querySelectorAll('article img'))
+  )(document.querySelectorAll('article img'));
+  showVisible()
 }
 )();
+window.addEventListener('scroll', showVisible);
