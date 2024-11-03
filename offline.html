@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <script>
+      //window.location.hash = "tgWebAppData=user%3D%257B%2522id%2522%253A6526862605%252C%2522first_name%2522%253A%2522Daniel%2522%252C%2522last_name%2522%253A%2522%2522%252C%2522username%2522%253A%2522dani_dsd%2522%252C%2522language_code%2522%253A%2522es%2522%252C%2522allows_write_to_pm%2522%253Atrue%257D%26chat_instance%3D8687617147785070437%26chat_type%3Dprivate%26auth_date%3D1730077246%26hash%3D910b138b836a4698d1ea5bcb2dc638bb5067a53ff278344a1c18926d7fdd17f6&tgWebAppVersion=7.4&tgWebAppPlatform=android&tgWebAppThemeParams=%7B%22bg_color%22%3A%22%23212d3b%22%2C%22section_bg_color%22%3A%22%231d2733%22%2C%22secondary_bg_color%22%3A%22%23151e27%22%2C%22text_color%22%3A%22%23ffffff%22%2C%22hint_color%22%3A%22%237d8b99%22%2C%22link_color%22%3A%22%235eabe1%22%2C%22button_color%22%3A%22%2350a8eb%22%2C%22button_text_color%22%3A%22%23ffffff%22%2C%22header_bg_color%22%3A%22%23242d39%22%2C%22accent_text_color%22%3A%22%2364b5ef%22%2C%22section_header_text_color%22%3A%22%2379c4fc%22%2C%22subtitle_text_color%22%3A%22%237b8790%22%2C%22destructive_text_color%22%3A%22%23ee686f%22%7D"
+    </script>
+    <title>Reidelrb Article</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=10">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="canonical" href="https://reidelrb.github.io">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      app {
+        touch-action: none;
+        position: fixed;
+        display: flex;
+        flex-direction: row-reverse;
+        top: -.1em;
+        right: .6em;
+        overflow: auto;
+        background: #ececec;
+        border-radius: 0 0 .2em .2em;
+        text-align: center;
+        box-shadow: 0 0 .2em #000;
+        font-size: 1.2em;
+        border: outset 1px
+      }
+
+      app a {
+        color: #000;
+        min-width: 2em;
+        display: inline-block;
+        padding: .2em .2em
+      }
+
+      app b {
+        color: #fff;
+        display: inline-block;
+        text-shadow: 0 0 .1em #000;
+        border-left: solid 1px #fff;
+        position: relative;
+        background: dodgerblue;
+        min-width: 3em;
+        padding: .2em .2em
+      }
+
+      .menu-e {
+        padding: 0;
+        border: outset 1px;
+        outline: none;
+        border-radius: .1em;
+        box-shadow: 0 0 .3em #000
+      }
+
+      .menu-e a {
+        color: #000;
+        display: inline-block;
+        padding: .2em;
+        font-size: 1.3em
+      }
+
+      article {
+        padding-top: 2.5em
+      }
+
+      .accion {
+        outline: 0;
+        margin: 1em auto;
+        border-radius: .2em;
+        border: outset 1px var(--bg-shadow);
+        background: var(--background);
+        color: var(--cl);
+        box-shadow: 0 0 .2em #000;
+        max-width: 20em;
+        width: 90%;
+        font-size: .9em;
+        padding: .8em .5em;
+        animation: a-pt .5s
+      }
+
+      @keyframes a-pt {
+        0% {
+          margin-top: -80%
+        }
+      }
+
+      .accion div {
+        padding: .5em 0;
+        font-weight: 300;
+        overflow: auto
+      }
+
+      .accion>label {
+        position: absolute;
+        right: 0;
+        top: 0;
+        font-size: 1.2em;
+        padding: 0 .3em;
+        color: #acacac
+      }
+
+      .accion :is(b, strong, strong-a) {
+        font-weight: 600;
+        display: inline-block;
+        font-size: .7em;
+        width: 100%
+      }
+
+      strong-a {
+        color: red
+      }
+
+      .accion button {
+        float: right
+      }
+
+      button {
+        display: inline-block;
+        vertical-align: middle;
+        border: none;
+        border-radius: 4px;
+        color: white;
+        padding: .3em;
+        outline: 0;
+        font-size: .7em;
+        text-shadow: 0 0 1px #000;
+        background-color: dodgerblue;
+        border: 1px solid #595ef1bd
+      }
+
+      .accion input {
+        width: 100%;
+        outline: 0;
+        box-shadow: inset 0 0 5px #acacac;
+        border: none;
+        border-radius: .2em;
+        padding: .4em;
+        font-size: .9em;
+        font-weight: 200;
+        font-family: asap;
+        background: #fff;
+        color: #000;
+        resize: none;
+        margin: .2em 0
+      }
+
+      img, p, h1, h2 {
+        min-height: 2em
+      }
+
+      #gl,#sh {
+        width: 100%;
+        min-height: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        background: rgba(0,0,0,0.4);
+        color: #fff;
+      }
+
+      #gl img {
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        overflow: hidden;
+        display: inline!important;
+        margin: .1em;
+        width: calc( 100%/var(--img) - .2em);
+      }
+
+      #gale .bi-x-circle-fill {
+        position: fixed;
+        margin: .3em;
+        font-size: 1.5em;
+        color: #000;
+        text-shadow: 0 0 .2em #fff
+      }
+
+      #gale {
+        width: 100%;
+        margin: auto auto 0;
+        background: var(--background);
+        min-height: 5em;
+        box-shadow: 0 0 1em #000;
+        overflow: auto
+      }
+
+      #fts {
+        display: flex;
+        flex-wrap: wrap;
+        padding-bottom: 1em;
+        width: calc(100px + 100px*var(--img))
+      }
+
+      .search {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 80%;
+        margin: 1% 10%;
+        background: dodgerblue;
+        display: flex;
+        border-radius: .2em;
+        box-shadow: 0 0 .3em #000
+      }
+
+      .search input {
+        width: 100%;
+        font-size: 1.2em;
+        padding: .3em;
+        box-shadow: inset 0 0 2px #000;
+        border: none;
+        border-radius: .2em
+      }
+
+      div#sh {
+        z-index: 5;
+        padding: .5em;
+        display: none
+      }
+
+      #sh img {
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        overflow: hidden;
+        display: inline!important;
+        margin: .1em;
+        width: calc(25% - .2em);
+      }
+
+      #sh>section {
+        width: 100%;
+        height: 100%;
+        max-width: 25em;
+        overflow: auto;
+        background: var(--background);
+        border-radius: .2em;
+        padding: .1em
+      }
+
+      #sh>section .box {
+        width: 96%;
+        margin: 2%;
+        position: sticky;
+        top: 2%;
+        padding: .2em;
+        display: flex;
+        border-radius: .2em;
+        background: dodgerblue;
+        box-shadow: 0 0 3px #000;
+      }
+
+      #sh>section .box label, .search label {
+        font-size: 1.2em;
+        padding: .3em;
+        color: #fff
+      }
+
+      #results {
+        padding: .5em 0;
+        display: flex;
+        flex-wrap: wrap;
+        color: var(--color-font);
+        font-size: .7em;
+        text-align: center;
+      }
+
+      #results div {
+        padding: .6em .1em;
+        position: sticky;
+        bottom: 0;
+        width: 100%;
+        background: var(--background)
+      }
+
+      #results div label {
+        padding: .1em;
+        font-size: 1.7em;
+      }
+
+      .loading,.g-recaptcha {
+        width: 100%;
+        height: 100%;
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        background: rgba(0,0,0,0.4);
+        color: #fff
+      }
+
+      .loading {
+        text-shadow: 0 0 .2em #000
+      }
+
+      .hide {
+        display: none
+      }
+    </style>
+  </head>
+  <body>
+    <article></article>
+    <app></app>
+    <div class="loading">
+      <h1>Load...</h1>
+    </div>
+    <div id="gl">
+      <div id="gale">
+        <label class="bi-x-circle-fill"></label>
+        <div id="fts">
+          <img src="https://wallpapers.com/images/featured/mejor-p35bw4rf0tq0qv7m.jpg" loading="lazy">
+          <img src="https://img.freepik.com/foto-gratis/astronomia-cielo-nocturno-galactico-ciencia-combinada-ia-generativa_188544-9656.jpg" loading="lazy">
+          <img src="https://wallpapers.com/images/featured/4k-espacio-9w27dqmc4nrs3xwd.jpg" loading="lazy">
+          <img src="https://wallpapers.com/images/featured/hombre-zhtvgv0m39oukzgh.jpg" loading="lazy">
+          <img src="https://wallpapers.com/images/hd/men-phone-3d-triangle-pattern-8jbsxf929fkd6sb8.jpg" loading="lazy">
+          <img src="https://wallpapers.com/images/hd/men-phone-3d-black-blocks-9wqmbybdyyubnmb8.jpg" loading="lazy">
+          <img src="https://images.pexels.com/photos/10999002/pexels-photo-10999002.jpeg" loading="lazy">
+          <img src="https://s0.smartresize.com/wallpaper/284/883/HD-wallpaper-man-alone-dark.jpg" loading="lazy">
+          <img src="https://png.pngtree.com/thumb_back/fw800/background/20230521/pngtree-landscapes-wallpapers-with-mountains-and-caves-image_2669579.jpg" loading="lazy">
+          <img src="https://img.freepik.com/fotos-premium/fondos-paisajes-pacificos-hermosos-paisajes-hermosos-fondos-naturaleza-imagenes_1037362-766.jpg" loading="lazy">
+          <img src="https://wallpapers.com/images/hd/beautiful-scenery-desktop-wallpaper-37j7gek0i5agqrff.jpg" loading="lazy">
+          <img src="https://img.freepik.com/fotos-premium/hermosos-paisajes-lagos-hermosos-paisajos-lagos_1234738-411657.jpg" loading="lazy">
+          <img src="https://www.shutterstock.com/image-photo/big-cottonwood-canyon-scenic-road-600nw-2510178523.jpg" loading="lazy">
+          <img src="https://www.ngenespanol.com/wp-content/uploads/2024/07/por-esto-en-las-cimas-de-las-grandes-montanas-hace-tanto-frio-aunque-esten-mas-cerca-del-sol-770x431.jpg" loading="lazy">
+          <img src="https://www.globalnationalparks.com/es/wp-content/uploads/great-smoky-mountains-national-park-1024x490.jpg" loading="lazy">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Moraine_Lake_17092005.jpg/320px-Moraine_Lake_17092005.jpg" loading="lazy">
+          <img src="https://s1.elespanol.com/2023/04/12/curiosidades/naturaleza-planeta-tierra/755684659_232351312_1024x576.jpg" loading="lazy">
+        </div>
+      </div>
+      <div class="search">
+        <label onclick="bbs()" class="bi-google"></label>
+        <input id="search" placeholder="url or topic" type="url">
+      </div>
+    </div>
+    <div id="mcaptcha" class="g-recaptcha" data-callback="captcha" data-sitekey="6LdE6qgbAAAAANq2Tal4NuP8YdGwtfdTpCLArNE-">7</div>
+    <div id="sh">
+      <section>
+        <div class="box">
+          <label onclick=" sh.style.display='none';gl.style.display='flex'; action() " class="bi-x-circle-fill"></label>
+        </div>
+        <div id="results">
+          <p>Error !</p>
+        </div>
+        <div class="hide">
+          <div class="gcse-searchresults-only"></div>
+        </div>
+      </section>
+    </div>
+  </body>
+  <script psrc="https://cdn.jsdelivr.net/npm/eruda"></script>
+  <script src="script.js"></script>
+  <script>
+    try {
+      eruda.init()
+    } catch (e) {}
+    const vs = '1.17'
+    let clip = false
+    select = document.querySelector('app')
+    select.ondragstart = ()=>false;
+    select.onpointerdown = function() {
+      event.preventDefault()
+      $pi = event.clientX;
+      //article.setPointerCapture(event.pointerId);
+      select.onpointerup = function(event) {
+        if ($pi > event.clientX + 50) {
+          $project++
+          home()
+        }
+        if ($pi + 50 < event.clientX) {
+          $project--
+          $project < 1 && ($project = 1)
+          home()
+        }
+      }
+    }
+    ;
+
+    const app = document.querySelector('app')
+    app.onclick = function() {
+      event.stopPropagation()
+    }
+    gale.onclick = function() {
+      this.parentNode.style.display = "none"
+      event.stopPropagation()
+      action()
+    }
+
+    let fN = {}
+
+    ad = (t)=>{
+      let e = document.createElement(t)
+      if (t == 'h3') {
+        e.innerHTML = 'Lorem Ipsum title.'
+      }
+      if (t == 'p') {
+        e.innerHTML = 'Tritani ceteros eligendi usu ea, ei omnis menandri oportere has. bh vide wisi, pro in iriure antiopam. disputando.'
+      }
+      if (t == 'img') {
+        e.src = ''
+        e.loading = "lazy"
+        e.alt = ""
+        fN = e
+        load(true);
+        setTimeout('gl.style.display="flex",load()', 200)
+        miga.tagName == 'IMG' && (e.className = miga.className)
+      }
+
+      if (miga.tagName != 'H1' && miga.tagName != 'BODY') {
+        miga.after(e)
+      } else {
+        document.querySelector('article section').append(e)
+      }
+      action()
+    }
+    gtk = e=>{
+      var t = new Date().getTime();
+      return (e || "token-xxxxxxxx").replace(/[xy]/g, function(e) {
+        var n = (t + 16 * Math.random()) % 16 | 0;
+        return t = Math.floor(t / 16),
+        ("x" == e ? n : 3 & n | 8).toString(16)
+      })
+    }
+    accion = (t,c)=>{
+      let i = gtk('rbxxxxxxxxxxx')
+      window['accion' + i] = document.createElement('dialog')
+      window['accion' + i].className = 'accion'
+      window['accion' + i].innerHTML = `<div>${t}</div>${c ? '<button class="acepta bi-hand-index-thumb-fill"> Confirmar</button>' : ''}<label>×</label>`
+      document.body.append(window['accion' + i])
+      window['accion' + i].showModal()
+      window['accion' + i].querySelector('label').onclick = function() {
+        window['accion' + i].remove()
+      }
+      if (c) {
+        window['accion' + i].querySelector('.acepta').onclick = function() {
+          c()
+          window['accion' + i].remove()
+        }
+      } else {
+        window['accion' + i].querySelector('label').focus()
+      }
+    }
+    window.alert = accion
+    const api = new URLSearchParams(window.location.search)
+
+    dfile = (f,n,t)=>{
+      let l = document.createElement("a")
+        , o = new Blob([f],{
+        type: "text/" + t
+      });
+      //n&&(l.download = n)
+      alert('Se ha descargado su archivo <b>' + n + '</b>')
+      l.href = URL.createObjectURL(o),
+      l.click(),
+      URL.revokeObjectURL(l.href)
+    }
+
+    async function getFile(path) {
+      try {
+        const response = await fetch(path);
+        if (!response.ok)
+          throw new Error('Error al obtener SHA del archivo');
+        const f = await response.text();
+        return f;
+      } catch (e) {
+        alert(e);
+      }
+    }
+
+    (action = async(e)=>{
+      let nm = document.querySelectorAll('#fts img')
+      nm.forEach(f=>{
+        f.onclick = function() {
+          fN.src = this.src
+        }
+        f.oncontextmenu = function() {
+          accion('¿Eliminar esta foto?', ()=>{
+            this.remove()
+            eliminarDeCache(this.src)
+            action()
+          }
+          )
+        }
+        let tm = Math.ceil(nm.length / 3)
+        document.documentElement.style.setProperty('--img', tm < 3 ? 3 : tm)
+      }
+      );
+
+      record();
+
+      app.innerHTML = `<b class="bi-trash" onclick="accion('¿Borrar toda la página actual?',()=>{accion('Seguro desea eliminar el contenido de ésta página.${document.querySelector('article header').dataset.path ? ' La página no será eliminada de telegra.ph y ya no podrá editarla!' : ''}',()=>{accion('Confirma para eliminar de forma permanente!!!',()=>{record(template);home()})})})">${$project}</b>`
+
+      opt = (c,f,p,t)=>{
+        let a = document.createElement(t || 'a')
+        a.className = 'bi-' + c
+        a.onclick = f
+        p.append(a)
+      }
+      ;
+
+      opt('info-circle', ()=>{
+        alert(`<h3>Hola Mundo</h3>`)
+      }
+      , app),
+
+      opt((inbot ? 'robot' : 'cloud-download'), ()=>{
+        paths = document.querySelector('article header').dataset.path
+        accion(inbot ? paths ? `Actualizar éste artículo en telegra.ph <b>${window.location.origin}/${paths}</b>` : 'Publicar artículo en telegra.ph' : 'Descargar cómo HTML', async()=>{
+          if (inbot) {
+            const te = document.querySelector('h1').innerHTML;
+            const hd = `&author_name=${user.first_name}%20${user.last_name}`;
+
+            let page = [{
+              tag: 'br',
+              children: ["hola"]
+            }];
+            (childs = (e)=>{
+              if (e) {
+                let t = (e.tagName).toLowerCase()
+                o = {
+                  tag: t
+                };
+                (t == 'p' || t == 'h3') && (o.children = [e.innerHTML.replace(/(<br>)/gim, '\n')])
+                t == 'img' && (o.attrs = {
+                  src: e.src
+                })
+
+                page.push(o)
+                n = e.nextElementSibling
+                n && (childs(n))
+              } else {
+                alert('No hay contenido para publicar')
+                return true
+              }
+            }
+            )(document.querySelector('article section').firstElementChild);
+
+            (async function telegra() {
+              load(true);
+              if (!document.querySelector('article header').dataset.path) {
+                // crear cuenta
+                fetch_('https://api.telegra.ph/createAccount?short_name=' + user.username + hd, (x)=>{
+                  document.querySelector('article header').dataset.token = x.result.access_token
+                  // crear página
+                  console.log(document.querySelector('article header').dataset.token)
+                  fetch_('https://api.telegra.ph/createPage?access_token=' + document.querySelector('article header').dataset.token + '&title=' + (user.username.toLowerCase()).replaceAll('_', 'S') + hd + '&content=[{"tag":"p","children":["Hello,+world!"]}]&return_content=true', (x)=>{
+                    document.querySelector('article header').dataset.path = x.result.path
+                    record()
+                    telegra()
+                  }
+                  )
+                }
+                )
+              } else {
+                if (page.length > 0) {
+                  (async()=>{
+                    const url = 'https://api.telegra.ph/editPage';
+                    const params = new URLSearchParams({
+                      access_token: document.querySelector('article header').dataset.token,
+                      title: te,
+                      author_url: 'https://t.me/' + user.username,
+                      return_content: true,
+                      path: document.querySelector('article header').dataset.path,
+                      content: JSON.stringify(page),
+                    });
+                    try {
+                      const response = await fetch(url, {
+                        method: 'POST',
+                        body: params
+                      });
+                      const data = await response.json();
+                      console.log(JSON.stringify(data, null, 2))
+                      miurl = window.location.origin + '/' + document.querySelector('article header').dataset.path
+                      accion(`La URL de acceso a tu página: <input disabled value="${miurl}" type="url"> `, ()=>{
+                        copyToClip(miurl)
+                      }
+                      )
+                      load();
+                    } catch (error) {
+                      load();
+                      alert('Sin acceso!');
+                    }
+                  }
+                  )()
+                }
+              }
+            }
+            )()
+          } else {
+            $basic_css = ''
+            //document.querySelector("#style").innerHTML.replace(/(  )|(\n)/gim, ""),
+            $host = window.location.origin
+            pg = article.innerHTML.replaceAll(' src="', ' data-src="'),
+            html = `<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1"/><link rel="icon" href="${$host}/icon.png"/><title>${(x = article.querySelector("h1")) ? x.innerHTML : "default Page"}</title><style>${$basic_css}</style></head><body><article>${pg}</article></body><script src="script.js"><\/script></html>`;
+            let e = html.split(/(?=<)/).map(e=>e.trim())
+              , t = ""
+              , n = 0;
+            e.forEach(e=>{
+              e.startsWith("</") && --n < 0 && (n = 0),
+              ["</title>", "<br>", "</i>", "</style>", "<\/script>", "</a>", "</span>", "</label>", "</p>", "</h1>", "</h2>"].indexOf(e) >= 0 ? t += e : t += "\n" + "  ".repeat(n) + e,
+              !e.startsWith("<") || e.endsWith("/>") || e.startsWith("</") || e.startsWith("<img") || e.startsWith("<!DOCTYPE") || e.startsWith("<br") || e.startsWith("<hr") || n++
+            }
+            );
+            t = t.replace('<script src="script.js"><\/script>', '<script>' + (await getFile('script.js')).replace(/(\n)|(\s\s)/gim, '') + '<\/script>').replace('<style><\/style>', '<style>' + (await getFile('style.css')).replace(/(  )|(\n)/gim, "") + '<\/style>')
+            dfile(t, (x = article.querySelector("h1")) ? x.innerHTML : "free html", 'html')
+          }
+        }
+        )
+      }
+      , app);
+
+      ['article h1', 'article h3', 'article p', 'article img'].forEach(t=>{
+        document.querySelectorAll(t).forEach((e,n)=>{
+          e.onclick = function() {
+            event.stopPropagation()
+            let e = miga = this
+            let t = this.tagName
+            let l = document.createElement("dialog");
+
+            opt('pencil-square', ()=>{
+              if (this.tagName != 'IMG') {
+                this.contentEditable = 'plaintext-only';
+                this.onblur = function() {
+                  this.innerHTML = this.innerHTML.replace(/(\n)/gim, '<br>')
+                  this.contentEditable = 'inherit'
+                  action()
+                  event.preventDefault()
+                }
+              } else {
+                fN = this
+                load(true);
+                setTimeout('gl.style.display="flex",load()', 200)
+              }
+            }
+            , l);
+
+            (t != 'H1') && (opt('trash', ()=>{
+              accion('Eliminar el elemento ' + {
+                P: 'Párrafo',
+                H3: 'Subtítulo',
+                IMG: 'Image'
+              }[this.tagName], ()=>{
+                this.remove()
+                action()
+              }
+              )
+            }
+            , l),
+
+            opt(clip ? 'copy' : 'scissors', ()=>{
+              clip ? (this.after(clip),
+              clip = false,
+              app.innerHTML = "",
+              action()) : (clip = this.cloneNode(true),
+              app.innerHTML = '',
+              this.remove())
+            }
+            , l));
+
+            opt('plus-square', ()=>{
+              miga = this
+              event.stopPropagation()
+              l.innerHTML = `
+                <a onclick="ad('img')" class="bi-image"></a>
+                <a onclick="ad('h3')" class="bi-fonts"></a>
+                <a onclick="ad('p')" class="bi-justify-left"></a>
+                `
+            }
+            , l);
+
+            (this.contentEditable != 'plaintext-only') && (menu(false, l));
+          }
+        }
+        )
+      }
+      );
+    }
+    )
+
+    record = (t)=>{
+      putDB((t || article.innerHTML).replace(/(checked=\"\")|(flex;)|(none;)|(class="select")|(contenteditable="plaintext-only")|(class="")/gim, ''))
+      putDB(document.querySelector('#fts').innerHTML, 'fts')
+    }
+
+    const copyToClip = async str=>{
+      try {
+        await navigator.clipboard.writeText(str);
+        alert("Copiado en el portapapeles!")
+      } catch (e) {
+        alert(e);
+      }
+    }
+
+    load = (a)=>{
+      document.querySelector('.loading').style.display = a ? 'flex' : 'none'
+    }
+
+    const fetch_ = async(url,callback)=>{
+      console.log(url)
+      load(true)
+      try {
+        let response = await fetch(url, {
+          headers: {},
+          method: 'GET'
+        });
+        load()
+        if (response.ok) {
+          try {
+            json = await response.json();
+            console.log(JSON.stringify(json, null, 2))
+          } catch (e) {
+            json = {
+              error: e.name
+            }
+          }
+          callback && (callback(json))
+        } else {
+          callback && (callback({
+            error: response.status
+          }))
+        }
+      } catch (e) {
+        load()
+        alert('Error ' + e.message)
+      }
+    }
+
+    const $app_name = '@article'
+    let $project = Number(localStorage.page || 1)
+    function home() {
+      inbot = false
+      user = {
+        username: gtk('xxxxxxxxxxxx'),
+        first_name: ''
+      };
+
+      if (window.Telegram && window.Telegram.WebApp.initDataUnsafe.user) {
+        user = window.Telegram.WebApp.initDataUnsafe.user
+        inbot = true
+        window.Telegram.WebApp.onEvent('viewportChanged', function() {
+          window.Telegram.WebApp.expand()
+        });
+        window.Telegram.WebApp.expand()
+      }
+      template = `
+        <header>
+          <h1>Minimalist page web</h1>
+          <div>
+            <span data-view="${user.username}" class="bi-eye-fill">&nbsp;Views</span>
+            <span data-time="" class="bi-calendar2-date">&nbsp;Time ago</span>
+            ${user.first_name ? `<a data-auth="${user.username}" class="bi-person-circle">&nbsp;${user.first_name} ${user.last_name}</a>` : ''}
+          </div>
+        </header>
+        <section>
+          <p>Hola ${user.first_name}, puedes editar ésta página y compartirla con tus amigos... ${user.first_name == '' ? 'Usa el bot de telegram para publicarla en telegra.ph' : ''}</p>
+        </section>
+      `;
+
+      localStorage.page = $project
+      load(true)
+      searchDB($project, (p)=>{
+        load()
+        if (p) {
+          var d = p
+        } else {
+          var d = template
+        }
+        article.innerHTML = d;
+        ((o)=>{
+          o && (o.onclick = function() {
+            fetch_(`https://api.counterapi.dev/v1/${this.dataset.view}/counter`, (e)=>{
+              if (e.count) {
+                alert(`Ésta página ${e.count == 0 ? 'no ha registrado visitas!' : 'ha registrado ' + e.count + ' visitas de usuarios con Internet!'}`)
+              } else {
+                e.error == 400 && (alert('Aún no se han registrado visitas para esta página!'))
+              }
+            }
+            )
+          }
+          )
+        }
+        )(document.querySelector('[data-view]'));
+
+        ((o)=>{
+          if (user.first_name && o) {
+            o.innerHTML = ' ' + user.first_name
+            o.dataset.auth = ' ' + user.username
+          }
+        }
+        )(document.querySelector('[data-auth]'));
+        action()
+      }
+      )
+    }
+    let openRequest = indexedDB.open($app_name, 1);
+    openRequest.onupgradeneeded = function() {
+      let db = openRequest.result;
+      if (!db.objectStoreNames.contains($app_name)) {
+        db.createObjectStore($app_name, {
+          keyPath: 'id'
+        });
+        console.log($app_name + ' instalado con éxito')
+      }
+    }
+    openRequest.onerror = function() {
+      console.error("Error", openRequest.error)
+    }
+    openRequest.onsuccess = function() {
+      db = openRequest.result;
+      console.log($app_name + " cargado")
+      searchDB('fts', (f)=>{
+        f && (document.querySelector('#fts').innerHTML = f)
+        home()
+      }
+      )
+    }
+
+    searchDB = (t=$app_name,callback)=>{
+      let transaction = db.transaction($app_name);
+      let books = transaction.objectStore($app_name);
+      let request = books.get(t);
+
+      request.onsuccess = function() {
+        if (request.result !== undefined) {
+          console.log("datos en: " + t);
+          callback(request.result.data)
+        } else {
+          callback(false)
+          console.log(t + ": no tiene datos");
+        }
+      }
+    }
+
+    putDB = (d,t=$project)=>{
+      let transaction = db.transaction($app_name, "readwrite");
+      let data = {
+        id: t,
+        data: d
+      }
+      let request = transaction.objectStore($app_name).put(data);
+      request.onsuccess = function(event) {
+        console.log(t + " Save kb " + (d.length / 1024).toFixed(1))
+      }
+      request.onerror = function(event) {
+        console.log(request.error)
+      }
+      transaction.onabort = function() {
+        console.log("Error", transaction.error);
+      }
+    }
+
+    (minisearch = ()=>{
+      busca = (q,s=0)=>{
+        search.blur()
+        load(true)
+        let z = new Image()
+        z.src = q
+        z.onload = function() {
+          load()
+          fN.src = this.src
+          gimg(this)
+          search.value = ''
+          alert('Se ha añadido la imagen de la url')
+          record()
+          action()
+        }
+        z.onerror = function() {
+          load()
+          putSc(`https://cse.google.com/cse/element/v1?rsz=filtered_cse&num=20&start=${s}&hl=es&source=gcsc&cselibv=${goo.cselibv}&searchtype=image&cx=${cx}&q=${q || search.value}&safe=off&cse_tok=${goo.cse_tok}&exp=cc%2Capo&callback=gs${localStorage._grecaptcha ? '&g-recaptcha-response=' + localStorage._grecaptcha : ''}&rurl=http%3A%2F%2Flocalhost%3A8080%2Findex.html`)
+        }
+      }
+      putSc = (d)=>{
+        load(true)
+        let s = document.createElement('script')
+        s.src = d
+        s.onerror = s.onload = function() {
+          this.remove()
+          load()
+        }
+        document.head.append(s)
+      }
+      search.onchange = bbs = function() {
+        sh.style.display = "flex"
+        gl.style.display = "none"
+        goo = JSON.parse(localStorage.goo || "{}")
+        let q = search.value;
+        if (goo.cse_tok) {
+          q.trim() && (busca(q))
+        } else {
+          function handleNewScript(g) {
+            let k = (new URLSearchParams((new URL(g.src)).search))
+            if (k.get('cse_tok')) {
+              goo.cse_tok = k.get('cse_tok')
+              goo.cselibv = k.get('cselibv')
+              localStorage.goo = JSON.stringify(goo)
+              observer.disconnect()
+              busca(k.get('q'))
+              history.replaceState(null, document.title, location.pathname + location.search)
+              alert('El buscador está disponible!')
+              console.log(g.src)
+            }
+          }
+          const observer = new MutationObserver(mutations=>{
+            mutations.forEach(mutation=>{
+              mutation.addedNodes.forEach(node=>{
+                if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'SCRIPT' && (new URLSearchParams((new URL(node.src)).search)).get('cse_tok')) {
+                  handleNewScript(node);
+                }
+              }
+              );
+            }
+            );
+          }
+          );
+          observer.observe(document, {
+            childList: true,
+            subtree: true
+          });
+          putSc("https://cse.google.com/cse.js?cx=" + cx)
+          window.location.hash = "#gsc.q=" + q
+        }
+      }
+    }
+    )()
+
+    gimg = (e)=>{
+      e.loading = 'lazy';
+      !document.querySelector('#fts img[src="' + e.src + '"]') && (fts.prepend(e),
+      action())
+      return false
+    }
+
+    gU = (e)=>{
+      t = ((new URL(e.dataset.src)).host)
+      return t
+    }
+    gs = (r)=>{
+      console.log(JSON.stringify(r, null, 2))
+      let li = '';
+      if (r.results) {
+        r.results.forEach(o=>{
+          li += `<img onclick="accion('Guardar ésta imagen?<br>'+ gU(this) ,()=>{ load(true);i=new Image(); i.src= this.dataset.src; i.onload=function(){gimg(this); load();record();fts.scrollTop=0 };i.onerror=function(){load();alert('Error al cargar la imagen')} })" src="${o.tbMedUrl}" data-src="${o.url}" class="mini" alt="${(o.titleNoFormatting.replace(/[\W]+/gim, ' ')).slice(0, 60)}">`
+        }
+        )
+        results.innerHTML = ` ${li} <div>${r.cursor.pages.map((v,n)=>n < 8 ? `<label onclick="busca(null,${n * 20})" class="bi-${n + 1}-square${n == r.cursor.currentPageIndex ? '-fill' : ''}"></label>` : '').join('')}</div><p>Resultados de Google. Pueden estar sujetas a derechos de autor.</p>`
+      } else {
+        captcha = (t)=>{
+          localStorage._grecaptcha = t
+          busca();
+          mcaptcha.remove()
+        }
+        if (r.error) {
+          r.error.code == 429 && (alert('Demasiadas búsquedas por el momento! espere 5minutos'),
+          putSc('https://www.google.com/recaptcha/api.js'),
+          mcaptcha.style.display = 'flex')
+          r.error.code == 403 && (localStorage.goo = "{}",
+          bbs())
+        }
+      }
+    }
+
+    if ('serviceWorker'in navigator) {
+      caches.keys().then(function(cacheNames) {
+        cacheNames.forEach(function(cacheName) {//alert(cacheName)
+        //caches.delete(cacheName)
+        });
+      });
+    }
+
+    async function eliminarDeCache(url) {
+      const cache = await caches.open('cache-app-0');
+      await cache.delete(url);
+      console.log(`URL eliminada de la caché: ${url}`);
+    }
+    ;(async function listarCache() {
+      const cache = await caches.open('cache-app-0');
+      const keys = await cache.keys();
+      console.log('lista en cache')
+      for (const request of keys) {
+        const response = await cache.match(request);
+        const responseData = await response.clone().text();
+        // Clonamos para poder leerlo
+        console.log(`${request.url}`);
+        /*
+        i = new Image()
+        i.src = request.url
+        i.onload=function(){
+          gimg(this)
+        }
+        */
+      }
+    }
+    )();
+
+    function menu(e, l) {
+      getPosition = (e)=>{
+        var posx = 0;
+        var posy = 0;
+        if (!e) {
+          var e = window.event
+        }
+        if (e.pageX || e.pageY) {
+          posx = e.pageX;
+          posy = e.pageY + -window.pageYOffset;
+        } else if (e.clientX || e.clientY) {
+          posx = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
+          posy = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
+        }
+        return {
+          x: posx,
+          y: posy
+        };
+      }
+      l.className = "menu-e"
+      l.onclick = function() {
+        this.remove()
+        miga.focus()
+      }
+      document.body.append(l)
+      l.showModal()
+
+      var o = l;
+      let i = getPosition(e)
+        , r = i.x
+        , a = i.y
+        , c = o.offsetWidth + 4
+        , s = o.offsetHeight + 4
+        , u = window.innerWidth
+        , m = window.innerHeight;
+      u - r < c / 2 ? o.style.marginLeft = u - c + "px" : r - c / 2 < 0 ? o.style.marginLeft = "5px" : o.style.marginLeft = r - c / 2 + "px",
+      m - a < s / 2 ? o.style.marginTop = m - s + "px" : a - s / 2 < 0 ? o.style.marginTop = "5px" : o.style.marginTop = a - s / 2 + "px"
+    }
+
+    window.onscroll = function() {
+      document.querySelectorAll('.menu-e').forEach(r=>{
+        r.remove()
+      }
+      )
+    }
+
+    const cx = "4416977100c5544ee";
+    navigator.serviceWorker && navigator.serviceWorker.register("sw-app.js").then(e=>console.log("service worker registered")).catch(e=>console.log(`Here is the error: ${e}`));
+  </script>
+</html>
