@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8">
-    <title> octocat/Spoon-Knife </title>
+    <title> reidelrb/reidelrb.github.io </title>
     <meta name="viewport" content="width=device-width, initial-scale=1,minimum-scale=1,maximum-scale=1">
     <script>
 const asyload = (function() {
@@ -506,26 +506,7 @@ img.author {
     </footer>
   </body>
   <script>
-    const [owner,repo] = ((url)=> {
-      const patterns = [
-        /https:\/\/github\.com\/([^/]+)\/([^/]+)/,  // https://github.com/owner/reponame
-        /https:\/\/github\.com\/([^/]+)$/,          // https://github.com/owner
-        /https:\/\/([^/]+)\.github\.io\/([^/]+)/,   // https://owner.github.io/reponame
-        /https:\/\/([^/]+)\.github\.io$/            // https://owner.github.io
-      ];
-      for (const pattern of patterns) {
-        const match = url.match(pattern);
-          if (match) {
-            if (match.length === 3) {
-                return [match[1],match[2]];
-            } else if (match.length === 2) {
-                const repo = match[1] === "github.com" ? match[1] : `${match[1]}.github.io`;
-                return [match[1], repo];
-            }
-          }
-      }
-      return document.querySelector('title').text.trim().split('/');
-    })(window.location.href)
+    const [owner,repo] = document.querySelector('title').text.trim().split('/')
 
     asyload.render(document.body, {
       repo: repo,
