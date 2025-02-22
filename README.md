@@ -1,7 +1,3 @@
-A continuación, se presenta una documentación detallada para el código proporcionado. Esta documentación está diseñada para ayudar a los desarrolladores a comprender y utilizar el módulo `asyload` de manera efectiva.
-
----
-
 # Documentación de `asyload.js`
 
 ## Descripción General
