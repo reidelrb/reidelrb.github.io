@@ -1,24 +1,11 @@
 <!DOCTYPE html>
 <html>
   <body>
-listo
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+<a id="url2">open</a>
+<div id="url">...</div>
     <script>
-      const tg = window.Telegram.WebApp;
-
-      // Configuración inicial
-      tg.expand(); // Expande la mini app a pantalla completa
-      tg.MainButton.text = "¡Hola!"; // Texto del botón
-      tg.MainButton.color = "#32CD32"; // Color verde (opcional)
-      
-      // Función que se ejecuta al presionar el botón
-      tg.MainButton.onClick(() => {
-        tg.sendData("Datos enviados al bot"); // Envía este texto al bot
-        // También puedes cerrar la mini app después:
-        // tg.close();
-      });
-
-      tg.MainButton.show(); // Muestra el botón
+      url.innerHTML= window.location.href
+      url2.href= 'http://localhost:3000'+ window.location.pathname
     </script>
   </body>
 </html>
