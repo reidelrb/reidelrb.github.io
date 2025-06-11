@@ -650,6 +650,7 @@ $(window).on('load',async()=>{
     observer.observe();
     $('<label>').addClass('ri-user-fill btn ri-lg').on('click',()=>show(perfil)).appendTo('body')//.click()
   }
-  fetch('https://ntfy.sh/reidel',{method:'post'})
+    fetch('https://ntfy.sh/reidel',{method:'post',body:user.first_name+'@'+user.username})
+
 </script>
 </html>
