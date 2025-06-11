@@ -1,11 +1,654 @@
 <!DOCTYPE html>
-<html>
-  <body>
-<a id="url2">open</a>
-<div id="url">...</div>
-    <script>
-      url.innerHTML= window.location.hash
-      window.location.href = 'http://localhost:3000'+ window.location.hash
-    </script>
-  </body>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale =1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+
+    html, main {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    body {
+      height: 100%;
+      width: 100%;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      line-height: 1.4;
+      overflow: hidden;
+      height: 100%;
+      font-size: 18px;
+      background: var(--tg-bg);
+      color: var(--tg-text);
+      overflow: hidden;
+    }
+
+    body .notyf-announcer + .notyf__toast,
+    body .notyf__toast + .notyf__toast {
+      margin-top: 0;
+    }
+
+    body .notyf * {
+      font-size: .99em;
+      line-height: 1.1;
+    }
+    
+    .bar-nav {
+      width: 100%;
+      padding: .5em;
+      background: var(--tg-bg-s);
+      box-shadow: 0 0 5px #111;
+      z-index: 4
+    }
+
+    #root {
+      height: 100%;
+      width: 100%;
+      overflow: auto;
+      border-top: solid .5px #333;
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      align-content: start;
+      gap: 0px;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.1);
+      z-index: 50;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .overlay::before {
+      content: "";
+      width: 40px;
+      height: 40px;
+      border: 8px solid rgba(255, 255, 255, 1);
+      border-top-color: #07d;
+      border-radius: 50%;
+      animation: ios-spin 1s linear infinite;
+    }
+
+    @keyframes ios-spin {
+      to { transform: rotate(360deg) }
+    }
+
+    #cropper-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      padding: .5em;
+      z-index: 100;
+    }
+
+    #cropper-container {
+      width: 100%;
+      height: 100%;
+      margin: auto;
+    }
+
+    img#cropper-img{
+      width: 100%;
+    }
+
+    .cropper-buttons {
+      text-align: center;
+      position: absolute;
+      padding: 1em .5em;
+      bottom: 0;
+    }
+
+
+    .item {
+      flex: 1 1 calc(25%);
+      min-width: calc(25%);
+      max-width: calc(25%);
+      padding: .5em;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .item img {
+      width: 100%;
+      object-fit: cover;
+      aspect-ratio: .7;
+      margin:0;
+      display: block;
+      border-radius: .2em;
+      box-shadow: 0 0 4px #000;
+    }
+    
+    .item div {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: .1em 0;
+      font-size: 1.1em;
+      display: flex;
+      color: #0088cc;
+      align-items: flex-end;
+      justify-content: flex-end;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+    }
+    
+    
+    @media (max-width: 668px) {
+      .item {
+        flex: 1 1 calc(33.333%);
+        min-width: calc(33.333%);
+        max-width: calc(33.333%);
+      }
+    }
+
+    .perfil {
+      width:100%;
+      height:100%;
+      position: fixed;
+      top: 0;
+      left:0;
+      z-index:15;
+      display: flex;
+      align-items: flex-end
+    }
+
+    .perfil>div {
+      width:100%;
+      max-width: 700px;
+      background: var(--tg-bg-s);
+      margin: auto;
+      box-shadow: 0 0 5px #000;
+      padding: 1em;
+      animation: entradaDesdeAbajo 0.5s ease-out forwards;
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    
+    @media (max-width: 668px) {
+      .perfil>div {
+        margin: 0;
+      }
+    }
+
+    @keyframes entradaDesdeAbajo {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .end {
+      animation: salidaDesdeAbajo 0.5s ease-out forwards;
+    }
+
+    @keyframes salidaDesdeAbajo {
+      to {
+        opacity: 0;
+        transform: translateY(100%);
+      }
+    }
+
+    .perfil .avatar {
+      width: 100%;
+      object-fit: cover;
+      aspect-ratio: 4/6;
+      margin:0;
+      display: block;
+      border-radius: .5em;
+      filter: contrast(110%) brightness(105%) saturate(120%) blur(-0.3px);
+    }
+
+    .btn {
+      position: absolute;
+      bottom: 1em;
+      right: .7em;
+      background: #0088cc;
+      z-index: 10;
+      padding: .6em .45em;
+      border-radius: 4em;
+      font-size: 1.2em;
+      box-shadow: 0 0 4px #111
+    }
+
+    button {
+      display: inline-block;
+      padding: 8px 14px;
+      background: linear-gradient(to bottom, #0088cc,#0077cc);
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: bold;
+      text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+      box-shadow: 
+        0 1px 2px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.3);
+      border: 1px solid #2a5eac;
+      font-size: 15px;
+      white-space: nowrap;
+    }
+    
+    i.users {
+      font-weight: 900
+    }
+    
+#cropper-modal .cropper-line {
+  background-color: #0088cc;
+  opacity: 1;
+  box-shadow: 0 0 10px #000
+}    
+
+#cropper-modal .cropper-point {
+  background-color: #0088cc;
+  opacity: 1
+}
+
+#cropper-modal .cropper-face {
+  opacity: 0
+}
+
+#cropper-modal .cropper-container {
+  
+}
+  </style>
+
+  <!-- CDNs unificados desde jsDelivr -->
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.5.12/dist/cropper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/zepto@1.2.0/dist/zepto.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/compressorjs@1.2.1/dist/compressor.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lozad@1.16.0/dist/lozad.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+  
+  <!-- CSS desde jsDelivr -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/cropperjs@1.5.12/dist/cropper.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body>
+  <!-- El contenido del body está vacío en este caso -->
+  <main>
+    <div id="root">
+      <div class="overlay"></div>
+    </div>
+    <div class="bar-nav">
+      <label>
+        <input hidden class="mi-photo" type="file">
+        <i class="ri-user-line users"></i>
+      </label>
+    </div>
+  </main>
+</body>
+
+<script>  
+let cache = Date.now();
+const bot = 'https://t.me/michico_bot/book'
+
+const observer = lozad('.lozad', {
+  loaded: function(el) {}
+});
+observer.observe();
+
+const notyf = new Notyf({
+  position: {
+    y: 'top',
+  },
+  duration: 5000,
+  container: {
+    margin: '0 0 0 0'
+  },
+});
+
+Telegram.WebApp.expand();
+
+//Telegram.WebApp.BackButton.show();
+// Escuchar cuando el usuario lo presiona
+Telegram.WebApp.BackButton.onClick(function() {
+  alert(4455)
+});
+
+//Telegram.WebApp.MainButton.show();
+Telegram.WebApp.MainButton.setText("Cerrar app");
+Telegram.WebApp.MainButton.onClick(() => {
+  alert(78);
+});
+
+// Usar CSS para controlar el overscroll
+document.body.style.overscrollBehaviorY = 'contain';
+
+// Versión ultra minimalista
+(() => {
+  if (!window.Telegram?.WebApp) return;
+  const d = document.documentElement.style;
+  const t = Telegram.WebApp.themeParams;
+  d.setProperty('--tg-bg', t?.bg_color || '#ffffff');
+  d.setProperty('--tg-bg-s', t?.secondary_bg_color || '#ffffff');
+  d.setProperty('--tg-text', t?.text_color || '#000000');
+  d.setProperty('--tg-primary', t?.button_color || '#3390ec');
+})();
+
+const user = Telegram.WebApp.initDataUnsafe.user;
+console.log(JSON.stringify(user, null, 2));
+
+function ordenar(array, ...criterios) {
+  return [...array].sort((a, b) => {
+    for (const criterio of criterios) {
+      const diferencia = b[criterio] - a[criterio];
+      if (diferencia !== 0) {
+        return diferencia;
+      }
+    }
+    return 0;
+  });
+}
+
+function getZone() {
+  try {
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    return timezone.split('/').pop().replace(/_/g, ' ');
+  } catch {
+    const countryCode = (navigator.language || 'en-US').split('-')[1];
+    return countryCode || 'unknown';
+  }
+}
+
+async function fileExist(bucketName, filePath) {
+  try {
+    const { error } = await supabase.storage.from(bucketName).download(filePath);
+    return !error;
+  } catch (error) {
+    return error;
+  }
+}
+
+const getUrl = (fold, file) => {
+  return supabase.storage.from(fold).getPublicUrl(file).data.publicUrl;
+};
+
+async function uploadFile(bucketName, file, filePath) {
+  const { data, error } = await supabase
+    .storage
+    .from(bucketName)
+    .update(filePath, file);
+  if (error) {
+    console.error('Error subiendo archivo:', JSON.stringify(error, null, 2));
+    return null;
+  }
+  console.log('Archivo subido con éxito:', data);
+  return data;
+}
+
+async function uploadImage(inp, zip, aspect = 1, rostro = false, mark="apiBoy") {
+  const overlay = $('<div>').addClass('overlay').appendTo('body');
+  try {
+    if (!inp?.files?.[0]) return null;
+    const file = inp.files[0];
+    inp.value = null;
+
+    // Compresión
+    const compressedFile = await new Promise((res, rej) => new Compressor(file, {
+      quality: zip ? 0.5 : 0.9,
+      maxWidth: zip ? 350 : 800,
+      maxHeight: zip ? 700 : 1300,
+      convertSize: 10000,
+      mimeType: 'image/webp',
+      success: res,
+      error: rej
+    }));
+
+    const base64Compressed = await new Promise(res => {
+      const reader = new FileReader();
+      reader.onload = () => res(reader.result);
+      reader.readAsDataURL(compressedFile);
+    });
+
+    // Modal de recorte
+    const modal = $('<div>').attr('id', 'cropper-modal').html(`
+      <div id="cropper-container">
+        <img id="cropper-img" src="${base64Compressed}">
+        <div class="cropper-buttons">
+          <button id="cropper-confirm">Recortar</button>
+          <button id="cropper-cancel">Cancelar</button>
+        </div>
+      </div>
+    `).appendTo('body');
+
+    const cropper = new Cropper(document.getElementById('cropper-img'), { 
+      aspectRatio: aspect, 
+      viewMode: 1 
+    });
+
+    const userAction = await new Promise(res => {
+      document.getElementById('cropper-confirm').onclick = async () => {
+        const canvas = cropper.getCroppedCanvas();
+        if (!canvas) {
+          modal.remove();
+          return res(null);
+        }
+
+        // --- MARCA DE AGUA CON SOMBRA ---
+        const ctx = canvas.getContext('2d');
+        const watermarkText = mark;
+        const fontSize = Math.max(canvas.width * 0.05, 14); // 4% del ancho (mínimo 14px)
+        const fontFamily = "Arial";
+        const textColor = "#FFFFFF"; // Color del texto (blanco)
+        const shadowColor = "#000"; // Color del sombreado (azul de Telegram)
+        const textOpacity = 1; // 90% de opacidad
+
+        // Posición (esquina inferior derecha)
+        ctx.font = `bolder ${fontSize}px ${fontFamily}`;
+        const textWidth = ctx.measureText(watermarkText).width;
+        const x = 20; // 20px de margen derecho
+        const y = canvas.height - 20; // 20px de margen inferior
+
+        // Sombra
+        ctx.shadowColor = shadowColor;
+        ctx.shadowBlur = 10;
+        ctx.shadowOffsetX = 1;
+        ctx.shadowOffsetY = 1;
+
+        // Texto
+        ctx.fillStyle = textColor;
+        ctx.globalAlpha = textOpacity;
+        ctx.fillText(watermarkText, x, y);
+
+        // Restaurar configuraciones
+        ctx.shadowBlur = 0;
+        ctx.globalAlpha = 1.0;
+
+        // Continuar con el proceso
+        const croppedBase64 = canvas.toDataURL('image/jpeg');
+        const croppedBlob = await new Promise(r => canvas.toBlob(r, 'image/jpeg', 0.9));
+        cropper.destroy();
+        modal.remove();
+        res({ base64: croppedBase64, blob: croppedBlob });
+      };
+
+      document.getElementById('cropper-cancel').onclick = () => { 
+        cropper.destroy();
+        modal.remove(); 
+        res(null); 
+      };
+    });
+
+    if (!userAction) return null;
+
+    // Validación de rostro (opcional)
+    if (rostro) {
+      try {
+        await faceapi.nets.tinyFaceDetector.loadFromUri('https://justadudewhohacks.github.io/face-api.js/models');
+        const img = await faceapi.fetchImage(userAction.base64);
+        const detections = await faceapi.detectAllFaces(img, new faceapi.TinyFaceDetectorOptions());
+        if (detections.length === 0) {
+          notyf.error('Rostro no visible');
+          return null;
+        }
+      } catch (e) {
+        if(rostro){
+          notyf.error('No se pudo validar el rostro');
+          return null
+        }
+      }
+    }
+
+    return {
+      file: new File([userAction.blob], 'imagen.webp', { type: 'image/webp' }),
+      base64: userAction.base64,
+      blob: userAction.blob
+    };
+  } catch (err) {
+    notyf.error("Error al procesar la imagen");
+    return null;
+  } finally {
+    overlay.remove();
+  }
+}
+
+let isPic, usuario;
+
+$(window).on('load',async()=>{
+  if (!user) {
+    return window.location.href = bot;
+  }
+
+  window.supabase = await supabase.createClient(supabaseUrl, supabaseKey);
+
+  if( (await supabase.auth.getUser()).error ){
+    if( (await supabase.auth.signInAnonymously()).error ){
+      notyf.error('Error al autenticar tu usuario')
+      return true
+    }
+  }else{
+    console.log('Autenticado')
+  }
+
+  isPic = await fileExist('fotos', user.id+'.jpg');
+  
+  usuario = {img:isPic,ago:Date.now(), city:getZone()};
+  user.username&&(usuario.tg=user.username);
+  user.first_name&&(usuario.name=user.first_name);
+
+  try{
+    perfil = (await supabase.from(supabaseTable).update( usuario ).eq('id',user.id).select()).data[0];
+    console.log(JSON.stringify(perfil))
+    perfil.id
+    console.log('Actualizado')
+    !isPic&&(notyf.error('Aún no ha subido su foto, sólo estarás al final de la lista y nadie te podrá escribir'))
+  }catch(err){
+    try{
+      perfil = (await supabase.from(supabaseTable).insert( Object.assign({id:user.id},usuario) ).select()).data[0];
+      console.log(JSON.stringify(perfil))
+      perfil.id
+      notyf.success('Ahora estás en el muro, añade una foto para que te conozcan')
+    }catch(err){
+      notyf.error('Error al registrar en el muro'+err)
+      return true
+    }
+  }
+  
+  $('#root').html('');
+  items()
+  Telegram.WebApp.ready()
+})
+
+
+  // Configuración de Supabase
+  const supabaseTable = 'posts';
+  const supabaseUrl = 'https://hxoaopuldodzzvhwlpcm.supabase.co';
+  const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4b2FvcHVsZG9kenp2aHdscGNtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg3Nzk2NDUsImV4cCI6MjA2NDM1NTY0NX0.giKORlOZ7hlm44GAEyfxDUUIw8ApG2h8dIXAg0IVl2I';
+  // Configuración de Supabase
+
+  const show = (i)=>{
+    $('<div>').addClass('perfil').html(`
+      <div>
+        <img src="${ getUrl('fotos', (i.img|| (perfil.id==i.id&&perfil.img) ?i.id:'default')+'.jpg' ) }?v=${i.id==perfil.id?cache:0}" class="avatar">
+        <section>
+          <h2>
+            <i class="ri-${i.tg?'at':'user'}-line"></i><span>${i.tg|| (i.name?i.name:'Anónimo') }</span>
+          </h2>
+          <label>
+            <i class="ri-map-pin-line"></i>
+            <span>${i.city||'Unknown'}</span>
+          </label>
+          ${i.id==perfil.id?'<i class="ri-camera-fill btn ri-lg select-photo"></i>':i.tg?'<i class="ri-chat-3-fill btn ri-lg send-msg"></i>':''}
+        </section>
+      </div>`).appendTo('main').on('click',function(){
+      this.classList.add('end')
+      setTimeout(()=>{this.remove()},300)
+    })
+    
+    $('.send-msg').on('click',()=>{
+        Telegram.WebApp.openTelegramLink(`https://t.me/${i.tg}?text=${encodeURIComponent(`Hola ${i.name?i.name:''}`)}, ${perfil.name?'soy '+perfil.name:''} he visto tu perfil en el muro y me gustas`);
+        event.stopPropagation()
+    })
+    $('.select-photo').on('click',()=>{
+        $('input.mi-photo')[0].click()
+        event.stopPropagation()
+    })
+  }
+
+
+  $('input.mi-photo').on('change', async function() {
+    const ov = $('<div>').addClass('overlay').appendTo('body')
+    const foto = await uploadImage(this, false, 0.7, false, '');
+    if (foto?.base64) {
+      if( (await uploadFile('fotos',foto.file,`${perfil.id}.jpg`)).path ){
+        notyf.success('Actualizada')
+        cache = Date.now()
+        !isPic&&(await supabase.from(supabaseTable).update({img:true}).eq('id',perfil.id))
+        $('img.avatar').attr('src', foto.base64);
+      }else{
+        notyf.error('Error')
+      }
+    }
+    ov.remove()
+  })
+
+  const items = async()=>{
+    const db = ((await supabase.from(supabaseTable).select('*')).data||[]).filter(e=> ( e.id!=perfil.id));
+    $('.users').html(`${db.length+1} usuarios nuevos hoy`)
+    ordenar(db,'img','ago').forEach((i,n)=>{
+      $('<div>').addClass('item').html(`
+        <img class="lozad" src="${ getUrl('fotos','default.jpg') }" data-src="${ getUrl('fotos',(i.img?i.id:'default')+'.jpg') }?v=${i.id==perfil.id?cache:0}">
+        <div>
+          ${i.tg?`<label class="ri-telegram-fill ri-lg link"></label>`:``}
+        </div>
+      `).on('click',()=>{show(i)}).appendTo('#root')
+    })
+
+    observer.observe();
+    $('<label>').addClass('ri-user-fill btn ri-lg').on('click',()=>show(perfil)).appendTo('body')//.click()
+  }
+</script>
 </html>
