@@ -1,32 +1,21 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Telegram</title>
+  <meta charset="UTF-8">
+  <title>301</title>
+  <script>
+(function(urlDestino) {
+    const query = window.location.search;
+    const hash = window.location.hash;
+    let url = urlDestino;
+    
+    if (query) url += url.includes('?') ? '&' + query.slice(1) : query;
+    if (hash) url += hash;
+    
+    window.location.href = url;
+})('http://localhost:8080/index.html')
+  </script>
 </head>
 <body>
-
-    <h1>Telegram to localhost</h1>
-    <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-login="camilolink_bot" data-size="large" data-auth-url="http://localhost:8080/index.html"></script>
-
-<script>
-    alt = window.alert; alert = (t)=> alt(JSON.stringify(t,null,2))
-    
-    function getUrlParams(url = null) {
-      const targetUrl = url || (typeof window !== 'undefined' ? window.location.href : '');
-      if (!targetUrl) return {};
-      try {
-        const searchParams = new URL(targetUrl).searchParams;
-        return Object.fromEntries(searchParams.entries());
-      } catch (error) {
-        console.error('Error al parsear la URL:', error);
-        return {};
-      }
-    }
-    
-    alert(getUrlParams())
-
-</script>
 </body>
 </html>
