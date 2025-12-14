@@ -1,1 +1,2 @@
-alert(3)
+alert(4)
+console.log(document.currentScript.src)
