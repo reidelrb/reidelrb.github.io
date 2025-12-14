@@ -1,2 +1,2 @@
-alert(4)
-console.log(document.currentScript.src)
+alert(5)
+console.log('good',document.currentScript.src)
